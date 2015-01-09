@@ -54,7 +54,7 @@ public class Field {
     
     
     //Überprüfen, ob die Drehung möglich ist
-    public boolean isPossible(boolean[][] rotated, Block current){
+    public Block isPossible(boolean[][] rotated, Block current){
     	boolean possible=true;
     	int newposcol =current.getPoscol();
     	int newposrow = current.getPosrow();
@@ -74,36 +74,61 @@ public class Field {
     	}
     	
     	if (current.getPoscol() >11){
-    		for (int i= 13, i >11, i-- ){
     			for (int j=0, j< rotated.length, j++){
-    				for (int k= rotated.length-1, k>rotated.length-3,k--){
-    					if (rotated[j][k+current.getPoscol()]){
+    				for (int k= rotated.length-1, k>=rotated.length-2,k--){
+    					if ((rotated[j][k+current.getPoscol()]) && (k+current.getPoscol()>11)){
     						dif = current.getPoscol()-11;
     						newposcol=current.getPoscol()-dif;
     					}
     				}
     			}
     		}
-    	}
+
     	
     	if (current.getPosrow()<4){
-    		dif = 4-current.getPosrow();
-    		newposrow=current.getPosrow()+dif;
+    		for (int i=0, i<4, i++){
+    			for (int j=0, j< rotated.length,j++){
+    				for (int k=0, k<rotated.length, k++){
+    					if (rotated[j+i][k]){
+    				 		dif = 4-current.getPosrow();
+    			    		newposrow=current.getPosrow()+dif;
+    					}
+    				}
+    			}
+    		}
+   
     	}
     	
     	if (current.getPosrow()>23){
-    		dif= current.getPosrow()-23;
-    		newposrow=current.getPosrow()-dif;
+
+    			for (int j=rotated.length-1, j>= rotated.length-2, j--){
+    				for (int k= 0, k<rotated.length-1,k++){
+    					if ((rotated[j+current.getPosrow][k])&&(j+current.getPosrow>21)){
+    						dif= current.getPosrow()-23;
+    			    		newposrow=current.getPosrow()-dif;	
+    					}
+    				}
+    			}	
     	}
     	
-    	for (int i=current.getPosrow(); i< (current.getPosrow()+rotated.length); i++){
-    		for (int j=current.getPoscol(); j<(current.getPoscol()+rotated.length); j++){
+    	
+    	
+    	for (int i=newposrow; i< (newposrow+rotated.length); i++){
+    		for (int j=newposcol; j<(newposcol+rotated.length); j++){
     			if (!this.field[i][j].getIsEmpty()){
     				possible=false;
     			}
     		}
     	}
     	
+    	
+    	if (possible){
+    		current.setBlock(rotated);
+    		current.setPoscol(newposcol);
+    		current.setPosrow(newposrow);
+    	}
+    	
+    	return current;
     }
 
 

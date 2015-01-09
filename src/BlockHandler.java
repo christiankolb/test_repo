@@ -43,7 +43,7 @@ public class BlockHandler {
             for(int i = 0; i < rotation * -1; i++){
              //   current.rotateLeft();
             	boolean[][] rotated = current.rotateLeft();
-            if (	field.isPossible(rotated, current) current.setBlock(rotated);
+           field.isPossible(rotated, current);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach rechts drehen und abbrechen
             }
         }
@@ -52,7 +52,7 @@ public class BlockHandler {
         if(rotation <= 4 && rotation > 0){
             for(int i = 0; i < rotation * -1; i++){
               boolean[][] rotated=  current.rotateRight();
-            if (  field.isPossible(rotated, current) current.setBlock(rotated);
+             field.isPossible(rotated, current);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach links drehen und abbrechen
             }
         }
