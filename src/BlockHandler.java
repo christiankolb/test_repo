@@ -26,12 +26,12 @@ public class BlockHandler {
     public void spawnNextBlock(){
         current = factory.createNewBlock(randomNumber(6,0));
         current.setPosrow(0);
-        current.setPoscol(3);
+        current.setPoscol(5- (current.getBlock().length/2));
     }
 
     // random bewegen von aktuellem Stein
     public void moveBlock(){
-
+    	int move = randomNumber(3,0);
     }
 
     // random drehen von aktuellem Stein
@@ -43,7 +43,7 @@ public class BlockHandler {
             for(int i = 0; i < rotation * -1; i++){
              //   current.rotateLeft();
             	boolean[][] rotated = current.rotateLeft();
-            if (	field.isPossible(rotated, current.getPosrow(), current.getPoscol())) current.setBlock(rotated);
+            if (	field.isPossible(rotated, current) current.setBlock(rotated);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach rechts drehen und abbrechen
             }
         }
@@ -52,7 +52,7 @@ public class BlockHandler {
         if(rotation <= 4 && rotation > 0){
             for(int i = 0; i < rotation * -1; i++){
               boolean[][] rotated=  current.rotateRight();
-            if (  field.isPossible(rotated, current.getPosrow(), current.getPoscol())) current.setBlock(rotated);
+            if (  field.isPossible(rotated, current) current.setBlock(rotated);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach links drehen und abbrechen
             }
         }
@@ -66,7 +66,7 @@ public class BlockHandler {
         return isGameOver;
     }
 
-    // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (0-7)
+    // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
     private int randomNumber(int max, int min){
         randomNum = rand.nextInt((max-min) + 1) + min;
         return randomNum;

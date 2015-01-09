@@ -5,7 +5,6 @@ public class Block_L extends Block {
 
     public Block_L(){
         block = new boolean[3][3];
-        block = new boolean[3][3];
         block[0][0] = false;
         block[0][1] = true;
         block[0][2] = false;
