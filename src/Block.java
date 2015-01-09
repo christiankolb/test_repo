@@ -4,9 +4,9 @@
 public abstract class Block {
 
     protected boolean[][] block;
-  private int  posrow=0;
-  private int poscol=0;
-  private Shape shape;
+  protected int  posrow=0;
+  protected int poscol=0;
+  protected Shape shape;
     public Block(){
 
     }
@@ -27,6 +27,7 @@ public abstract class Block {
             }
         }
        // block = rotated;
+        System.out.println("Versuch Rotation nach rechts.");
         return rotated;
     }
 
@@ -62,6 +63,7 @@ public abstract class Block {
             }
         }
        // block = rotated;
+        System.out.println("Versuch Rotation nach links.");
         return rotated;
     }
 

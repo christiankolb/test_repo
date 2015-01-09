@@ -47,6 +47,7 @@ public class Field {
     	    			field[k][l]=roprev[l];
     	    		}
     			}
+    			System.out.println("Vollständige Reihe aufgelöst.");
     		}
     	}
     	
@@ -56,6 +57,7 @@ public class Field {
     //Überprüfen, ob die Drehung möglich ist
     public Block isPossible(boolean[][] rotated, Block current){
     	boolean possible=true;
+    	boolean chpos=false;
     	int newposcol =current.getPoscol();
     	int newposrow = current.getPosrow();
     	int dif;
@@ -66,6 +68,7 @@ public class Field {
     					if (rotated[j][k+i]){
     						dif= 2 - current.getPoscol();
     			    		newposcol= current.getPoscol()+dif;
+    			    		chpos=true;
     					}
     				}
     			}
@@ -79,6 +82,7 @@ public class Field {
     					if ((rotated[j][k+current.getPoscol()]) && (k+current.getPoscol()>11)){
     						dif = current.getPoscol()-11;
     						newposcol=current.getPoscol()-dif;
+    						chpos=true;
     					}
     				}
     			}
@@ -92,6 +96,7 @@ public class Field {
     					if (rotated[j+i][k]){
     				 		dif = 4-current.getPosrow();
     			    		newposrow=current.getPosrow()+dif;
+    			    		chpos=true;
     					}
     				}
     			}
@@ -106,6 +111,7 @@ public class Field {
     					if ((rotated[j+current.getPosrow][k])&&(j+current.getPosrow>21)){
     						dif= current.getPosrow()-23;
     			    		newposrow=current.getPosrow()-dif;	
+    			    		chpos=true;
     					}
     				}
     			}	
@@ -126,6 +132,10 @@ public class Field {
     		current.setBlock(rotated);
     		current.setPoscol(newposcol);
     		current.setPosrow(newposrow);
+    		System.out.println("Rotation wurde erfolgreich ausgeführt.");
+    		if (chpos) System.out.println("Stein wurde dabei ins Spielfeld gezogen.");
+    	} else {
+    		System.out.println("Rotation nicht möglich.");
     	}
     	
     	return current;
