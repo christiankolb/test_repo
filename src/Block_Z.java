@@ -3,7 +3,10 @@
  */
 public class Block_Z extends Block {
 
-    public Block_Z() {
+    public Block_Z(Shape s) {
+    	
+    	super(s);
+    	
         block = new boolean[3][3];
         block[0][0] = true;
         block[0][1] = true;
@@ -15,6 +18,5 @@ public class Block_Z extends Block {
         block[2][1] = false;
         block[2][2] = false;
         
-        shape = Z;
     }
 }

@@ -13,6 +13,6 @@ public class Block_T extends Block {
 		block[1][1] = true;
 		block[1][2] = false;
 		
-	} End constructor T
+	} // End constructor T
 
 } // End class Block_T
