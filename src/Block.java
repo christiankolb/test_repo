@@ -10,20 +10,20 @@ public abstract class Block {
     }
 
     // dreht das array 90° nach rechts
-    public void rotateRight(){
+    public Block rotateRight(){
         boolean[][] rotated = new boolean[block.length][block.length];
-
         for(int i = 0; i < block.length; i++){
             for(int j = 0; j < block.length; j++){
                 rotated[i][j] = block[block.length-j-1][i];
             }
         }
-        block = rotated;
+       // block = rotated;
+        return rotated;
     }
 
 
     // dreht das array 90° nach links
-    public void rotateLeft(){
+    public Block rotateLeft(){
         boolean[][] rotated = new boolean[block.length][block.length];
 
         for(int i = block.length-1; i >= 0; i--){
@@ -31,7 +31,8 @@ public abstract class Block {
                 rotated[i][j] = block[j][block.length-i-1];
             }
         }
-        block = rotated;
+       // block = rotated;
+        return rotated;
     }
 
 

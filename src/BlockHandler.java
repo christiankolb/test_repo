@@ -39,8 +39,9 @@ public class BlockHandler {
         // drehung nach links
         if(rotation >= -4 && rotation < 0){
             for(int i = 0; i < rotation * -1; i++){
-                current.rotateLeft();
-
+             //   current.rotateLeft();
+            	Block rotated = current.rotateLeft();
+            if (	field.isPossible(rotated)) current = rotated;
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach rechts drehen und abbrechen
             }
         }
@@ -48,8 +49,8 @@ public class BlockHandler {
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
             for(int i = 0; i < rotation * -1; i++){
-                current.rotateRight();
-
+              Block rotated=  current.rotateRight();
+            if (  field.isPossible(rotated)) current = rotated;
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach links drehen und abbrechen
             }
         }
@@ -78,12 +79,13 @@ public class BlockHandler {
         }
     }
 
+    //ohne �berpr�fung ob Absetzung
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
     private void finalizeBlock(){
         //TODO stein verewigen
-
+    	
         //volle reihen löschen, nachrücken
-        // field.deleteFullRows();
+         field.deleteFullRows();
     }
 
 }

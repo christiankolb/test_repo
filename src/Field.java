@@ -50,6 +50,12 @@ public class Field {
     	}
     	
     }
+    
+    
+    //Überprüfen, ob die Drehung möglich ist
+    public Boolean isPossible(Block rotated){
+    	
+    }
 
 
     // array wird normalerweise von oben nach unten abgearbeitet, tetris von unten nach oben -> methode ev hilfreich
