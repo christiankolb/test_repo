@@ -4,9 +4,8 @@
 public class GameApp {
 //test123
     public static void main(String[] args){
-        //field
+ 
         //blockhandler
-        //while != gameover
 
 		Field Playground = new Field();
 		Blockhandler handler= new Blockhandler();

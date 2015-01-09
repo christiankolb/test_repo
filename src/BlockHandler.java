@@ -63,7 +63,12 @@ public class BlockHandler {
 
     //nach jeder aktion checken ob gameover
     private boolean isGameOver(){
-        return isGameOver;
+    	for (int i=0, i<4, i++){
+    		for int(j=0, j<14,j++){
+    			if (!field.getField()[i][j].getIsEmpty()) return isGameOver;
+    		}
+    	}
+        
     }
 
     // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
