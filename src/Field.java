@@ -26,7 +26,31 @@ public class Field {
 
     public void deleteFullRows(){
         //TODO implementieren
+    	boolean isFull= false;
+    	for (int i=4; i< TOTAL_HEIGHT; i++){
+    		isFull=false;
+    		for (int j=0; j< WIDTH; j++){
+    			if (!field[i][j].getIsEmpty){
+    				isFull=true;
+    			} else {
+    				isFull=false;
+    			}
+    		}
+    		if (isFull){
+    			Cell[] rowprev = new Cell[WIDTH];
+    			Cell[] rownext = new Cell[WIDTH];
+    			for (int k=4; k< i; k++){
+    	    		for (int l=0; l< WIDTH; l++){
+    	    			rowprev[l]=field[k-1][l];
+    	    			rownext[l]=field[k][l];
+    	    			field[k][l]=roprev[l];
+    	    		}
+    			}
+    		}
+    	}
+    	
     }
+
 
     // array wird normalerweise von oben nach unten abgearbeitet, tetris von unten nach oben -> methode ev hilfreich
     private int convertY(int y){
