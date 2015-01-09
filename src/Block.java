@@ -4,13 +4,22 @@
 public abstract class Block {
 
     protected boolean[][] block;
-
+  private int  posrow=0;
+  private int poscol=0;
+  private Shape shape;
     public Block(){
 
     }
 
+    public boolean[][] getBlock(){
+    	return this.block;
+    }
+    
+    public void setBlock(boolean[][] b){
+    	this.block=b;
+    }
     // dreht das array 90° nach rechts
-    public Block rotateRight(){
+    public boolean[][] rotateRight(){
         boolean[][] rotated = new boolean[block.length][block.length];
         for(int i = 0; i < block.length; i++){
             for(int j = 0; j < block.length; j++){
@@ -21,9 +30,30 @@ public abstract class Block {
         return rotated;
     }
 
+    public void setPosrow(int p){
+    	this.posrow=p;
+    }
+    public void setPoscol(int p){
+    	this.poscol=p;
+    }
+    public int getPosrow(){
+    	return this.posrow;
+    }
+    
+    
+    public int getPoscol(){
+    	return this.poscol;
+    }
+    
+    public void setShape(Shape s){
+    	this.shape=s;
+    }
+    public Shape getShape(){
+    	return this.shape;
+    }
 
     // dreht das array 90° nach links
-    public Block rotateLeft(){
+    public boolean[][] rotateLeft(){
         boolean[][] rotated = new boolean[block.length][block.length];
 
         for(int i = block.length-1; i >= 0; i--){

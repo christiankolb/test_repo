@@ -25,6 +25,8 @@ public class BlockHandler {
     // spawnen von random Steinen; Bedingung ev in GameApp prüfen (while != gameover)
     public void spawnNextBlock(){
         current = factory.createNewBlock(randomNumber(6,0));
+        current.setPosrow(0);
+        current.setPoscol(3);
     }
 
     // random bewegen von aktuellem Stein
@@ -40,8 +42,8 @@ public class BlockHandler {
         if(rotation >= -4 && rotation < 0){
             for(int i = 0; i < rotation * -1; i++){
              //   current.rotateLeft();
-            	Block rotated = current.rotateLeft();
-            if (	field.isPossible(rotated)) current = rotated;
+            	boolean[][] rotated = current.rotateLeft();
+            if (	field.isPossible(rotated, current.getPosrow(), current.getPoscol())) current.setBlock(rotated);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach rechts drehen und abbrechen
             }
         }
@@ -49,8 +51,8 @@ public class BlockHandler {
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
             for(int i = 0; i < rotation * -1; i++){
-              Block rotated=  current.rotateRight();
-            if (  field.isPossible(rotated)) current = rotated;
+              boolean[][] rotated=  current.rotateRight();
+            if (  field.isPossible(rotated, current.getPosrow(), current.getPoscol())) current.setBlock(rotated);
                 //TODO prüfen ob neue drehung gültig, ansonsten zurück nach links drehen und abbrechen
             }
         }

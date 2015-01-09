@@ -53,7 +53,7 @@ public class Field {
     
     
     //Überprüfen, ob die Drehung möglich ist
-    public Boolean isPossible(Block rotated){
+    public Boolean isPossible(boolean[][] rotated, int posrow, int poscol){
     	
     }
 

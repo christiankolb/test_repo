@@ -14,5 +14,7 @@ public class Block_J extends Block {
         block[2][0] = true;
         block[2][1] = true;
         block[2][2] = false;
+        
+        shape = J;
     }
 }

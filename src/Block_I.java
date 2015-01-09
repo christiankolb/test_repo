@@ -21,5 +21,6 @@ public class Block_I extends Block {
         block[3][1] = true;
         block[3][2] = false;
         block[3][3] = false;
+        shape = I;
     }
 }
