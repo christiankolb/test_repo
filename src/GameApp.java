@@ -8,8 +8,8 @@ public class GameApp {
         //blockhandler
         //while != gameover
 
-
-
+		Field Playground = new Field();
+	
         //just some testing here
         Block i = new Block_I();
         Block j = new Block_J();
@@ -26,6 +26,8 @@ public class GameApp {
         s.printBlock();
         t.printBlock();
         z.printBlock();
+
+		Playground.printField();
 
     }
 }
