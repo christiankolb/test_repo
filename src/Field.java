@@ -11,14 +11,14 @@ public class Field {
     private Cell[][] field;
 
 
-    public Field(){
-        field = new Cell[WIDTH][TOTAL_HEIGHT];
-        for(int i = 0; i < WIDTH; i++){
-            for(int j = 0; i < TOTAL_HEIGHT; j++){
+     public Field(){
+        field = new Cell[TOTAL_HEIGHT][WIDTH];
+        for(int i = 0; i < TOTAL_HEIGHT; i++){
+            for(int j = 0; j < WIDTH; j++){
                 field[i][j] = new Cell();
             }
         }
-    }
+    } // end field
 
     public boolean isCellEmpty(int x, int y){
         return field[x][y].getIsEmpty();
@@ -33,6 +33,31 @@ public class Field {
         return TOTAL_HEIGHT - y;
     }
 
+    public Cell[][] getField()
+	{
+		return field;
+	}
+	
+	public void printField()
+	{
+		System.out.print("\n");
+		for(int i = 4; i < HEIGHT; i++) // 4 wegen dem "unsichtbaren" Bereich
+		{
+			System.out.print("\n");
+			
+			for(int j = 0; j < WIDTH; j++)
+			{
+				if(field[i][j].getIsEmpty())
+				{
+					System.out.print('o');
+				}
+				else
+				{
+				    System.out.print('x');
+				}
+			}
+		}
+	} // end printField
 
 
     ///////// Anregungen
