@@ -2,39 +2,39 @@
  * Created by patrick on 18.12.14.
  */
 public class GameApp {
-//test123
-    public static void main(String[] args){
- 
-        //blockhandler
+	// test123
+	public static void main(String[] args) {
+
+		// blockhandler
 
 		Field Playground = new Field();
-		Blockhandler handler= new Blockhandler();
-	
-        //just some testing here
-        Block i = new Block_I();
-        Block j = new Block_J();
-        Block l = new Block_L();
-        Block o = new Block_O();
-        Block s = new Block_S();
-        Block t = new Block_T();
-        Block z = new Block_Z();
+		// BlockHandler handler = new BlockHandler(Playground);
 
-        i.printBlock();
-        j.printBlock();
-        l.printBlock();
-        o.printBlock();
-        s.printBlock();
-        t.printBlock();
-        z.printBlock();
+		// just some testing here
+		Block i = new Block_I(Shape.I);
+		Block j = new Block_J(Shape.J);
+		Block l = new Block_L(Shape.L);
+		Block o = new Block_O(Shape.O);
+		Block s = new Block_S(Shape.S);
+		Block t = new Block_T(Shape.T);
+		Block z = new Block_Z(Shape.Z);
+
+		i.printBlock();
+		j.printBlock();
+		l.printBlock();
+		o.printBlock();
+		s.printBlock();
+		t.printBlock();
+		z.printBlock();
 
 		Playground.printField();
 
-		while (!handler.isGameOver()){
-			//hier laufen lassen:
-			//bewegung
-			//rotation
-			//automatische bewegung nach unten
-			//timer
-		}
-    }
+		/* while (!handler.isGameOver()) {
+			// hier laufen lassen:
+			// bewegung
+			// rotation
+			// automatische bewegung nach unten
+			// timer .............
+		 } */
+	}
 }
