@@ -3,18 +3,21 @@
  */
 public class Block_J extends Block {
 
-    public Block_J(){
-        block = new boolean[3][3];
-        block[0][0] = false;
-        block[0][1] = true;
-        block[0][2] = false;
-        block[1][0] = false;
-        block[1][1] = true;
-        block[1][2] = false;
-        block[2][0] = true;
-        block[2][1] = true;
-        block[2][2] = false;
-        
-        shape = J;
-    }
-}
+	public Block_J(Shape s) 
+	{
+		super(s);
+		
+		block = new boolean[3][3];
+		block[0][0] = false;
+		block[0][1] = true;
+		block[0][2] = false;
+		block[1][0] = false;
+		block[1][1] = true;
+		block[1][2] = false;
+		block[2][0] = true;
+		block[2][1] = true;
+		block[2][2] = false;
+
+	} // end constructor Block J
+} // end class J
+
