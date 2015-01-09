@@ -41,7 +41,7 @@ public class Field {
 	public void printField()
 	{
 		System.out.print("\n");
-		for(int i = 4; i < HEIGHT; i++) // 4 wegen dem "unsichtbaren" Bereich
+		for(int i = 4; i < TOTAL_HEIGHT; i++) // 4 wegen dem "unsichtbaren" Bereich
 		{
 			System.out.print("\n");
 			
