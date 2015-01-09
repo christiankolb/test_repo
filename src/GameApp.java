@@ -9,6 +9,7 @@ public class GameApp {
         //while != gameover
 
 		Field Playground = new Field();
+		Blockhandler handler= new Blockhandler();
 	
         //just some testing here
         Block i = new Block_I();
@@ -29,5 +30,12 @@ public class GameApp {
 
 		Playground.printField();
 
+		while (!handler.isGameOver()){
+			//hier laufen lassen:
+			//bewegung
+			//rotation
+			//automatische bewegung nach unten
+			//timer
+		}
     }
 }
