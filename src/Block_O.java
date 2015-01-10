@@ -12,20 +12,15 @@ public class Block_O extends Block {
 		block[0][1] = true;
 		block[1][0] = true;
 		block[1][1] = true;
-
-		// shape = O;
 	}
 
-	// keine drehung notwending
-	
-	/* @Override
-	public void rotateRight() {
-
-	}
-
-	// keine drehung notwending
 	@Override
-	public void rotateLeft() {
-	} */
-	
-} // end class Block_O
+	public boolean[][] rotateRight() {
+		return block;
+	}
+
+	@Override
+	public boolean[][] rotateLeft() {
+		return block;
+	}
+}

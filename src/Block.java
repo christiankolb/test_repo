@@ -21,18 +21,6 @@ public abstract class Block {
 		this.block = b;
 	}
 
-	// dreht das array 90° nach rechts
-	public boolean[][] rotateRight() {
-		boolean[][] rotated = new boolean[block.length][block.length];
-		for (int i = 0; i < block.length; i++) {
-			for (int j = 0; j < block.length; j++) {
-				rotated[i][j] = block[block.length - j - 1][i];
-			}
-		}
-		// block = rotated;
-		return rotated;
-	}
-
 	public void setPosrow(int p) {
 		this.posrow = p;
 	}
@@ -57,6 +45,17 @@ public abstract class Block {
 		return this.shape;
 	}
 
+	// dreht das array 90° nach rechts
+	public boolean[][] rotateRight() {
+		boolean[][] rotated = new boolean[block.length][block.length];
+		for (int i = 0; i < block.length; i++) {
+			for (int j = 0; j < block.length; j++) {
+				rotated[i][j] = block[block.length - j - 1][i];
+			}
+		}
+		return rotated;
+	}
+
 	// dreht das array 90° nach links
 	public boolean[][] rotateLeft() {
 		boolean[][] rotated = new boolean[block.length][block.length];
@@ -66,7 +65,6 @@ public abstract class Block {
 				rotated[i][j] = block[j][block.length - i - 1];
 			}
 		}
-		// block = rotated;
 		return rotated;
 	}
 

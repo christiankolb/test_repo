@@ -5,8 +5,6 @@ public class BlockFactory {
 
     public BlockFactory() {}
 
-
-    //erzeugt die entsprechenden Blöcke
     public Block createNewBlock(int shape){
 
         switch(shape){
