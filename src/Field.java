@@ -31,7 +31,7 @@ public class Field {
     	for (int i=4; i< TOTAL_HEIGHT-2; i++){
     		isFull=false;
     		for (int j=2; j< TOTAL_WIDTH-2; j++){
-    			if (!field[i][j].getIsEmpty){
+    			if (!field[i][j].getIsEmpty()){
     				isFull=true;
     			} else {
     				isFull=false;
@@ -44,17 +44,17 @@ public class Field {
     	    		for (int l=0; l< TOTAL_WIDTH; l++){
     	    			rowprev[l]=field[k-1][l];
     	    			rownext[l]=field[k][l];
-    	    			field[k][l]=roprev[l];
+    	    			// field[k][l]=roprev[l]; ???
     	    		}
     			}
-    			System.out.println("Vollständige Reihe aufgelöst.");
+    			System.out.println("Vollstï¿½ndige Reihe aufgelï¿½st.");
     		}
     	}
     	
     }
     
     
-    //Überprüfen, ob die Drehung möglich ist
+    //ï¿½berprï¿½fen, ob die Drehung mï¿½glich ist
     public Block isPossible(boolean[][] rotated, Block current){
     	boolean possible=true;
     	boolean chpos=false;
@@ -62,9 +62,9 @@ public class Field {
     	int newposrow = current.getPosrow();
     	int dif;
     	if (current.getPoscol() <2 ){
-    		for (int i= 0, i <2, i++ ){
-    			for (int j=0, j< rotated.length, j++){
-    				for (int k=0, k<2,k++){
+    		for (int i= 0; i <2; i++ ){
+    			for (int j=0; j< rotated.length; j++){
+    				for (int k=0; k<2;k++){
     					if (rotated[j][k+i]){
     						dif= 2 - current.getPoscol();
     			    		newposcol= current.getPoscol()+dif;
@@ -77,8 +77,8 @@ public class Field {
     	}
     	
     	if (current.getPoscol() >11){
-    			for (int j=0, j< rotated.length, j++){
-    				for (int k= rotated.length-1, k>=rotated.length-2,k--){
+    			for (int j=0; j< rotated.length; j++){
+    				for (int k= rotated.length-1; k>=rotated.length-2; k--){
     					if ((rotated[j][k+current.getPoscol()]) && (k+current.getPoscol()>11)){
     						dif = current.getPoscol()-11;
     						newposcol=current.getPoscol()-dif;
@@ -90,9 +90,9 @@ public class Field {
 
     	
     	if (current.getPosrow()<4){
-    		for (int i=0, i<4, i++){
-    			for (int j=0, j< rotated.length,j++){
-    				for (int k=0, k<rotated.length, k++){
+    		for (int i=0; i<4; i++){
+    			for (int j=0; j< rotated.length;j++){
+    				for (int k=0; k<rotated.length; k++){
     					if (rotated[j+i][k]){
     				 		dif = 4-current.getPosrow();
     			    		newposrow=current.getPosrow()+dif;
@@ -106,9 +106,9 @@ public class Field {
     	
     	if (current.getPosrow()>23){
 
-    			for (int j=rotated.length-1, j>= rotated.length-2, j--){
-    				for (int k= 0, k<rotated.length-1,k++){
-    					if ((rotated[j+current.getPosrow][k])&&(j+current.getPosrow>21)){
+    			for (int j=rotated.length-1; j>= rotated.length-2; j--){
+    				for (int k= 0; k<rotated.length-1; k++){
+    					if ((rotated[j+current.getPosrow()][k])&&(j+current.getPosrow()>21)){
     						dif= current.getPosrow()-23;
     			    		newposrow=current.getPosrow()-dif;	
     			    		chpos=true;
@@ -132,10 +132,10 @@ public class Field {
     		current.setBlock(rotated);
     		current.setPoscol(newposcol);
     		current.setPosrow(newposrow);
-    		System.out.println("Rotation wurde erfolgreich ausgeführt.");
+    		System.out.println("Rotation wurde erfolgreich ausgefï¿½hrt.");
     		if (chpos) System.out.println("Stein wurde dabei ins Spielfeld gezogen.");
     	} else {
-    		System.out.println("Rotation nicht möglich.");
+    		System.out.println("Rotation nicht mï¿½glich.");
     	}
     	
     	return current;
@@ -171,6 +171,8 @@ public class Field {
 				}
 			}
 		}
+		System.out.print("\n");
+		
 	} // end printField
 
 

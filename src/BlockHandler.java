@@ -62,14 +62,16 @@ public class BlockHandler {
     }
 
     //nach jeder aktion checken ob gameover
-    private boolean isGameOver(){
-    	for (int i=0, i<4, i++){
-    		for int(j=0, j<14,j++){
-    			if (!field.getField()[i][j].getIsEmpty()) return isGameOver;
+    public boolean isGameOver(){
+    	for (int i=0; i<4; i++){
+    		for (int j=0; j<14; j++){
+    			if (!field.getField()[i][j].getIsEmpty()) return true;
+    			
     		}
     	}
-        
-    }
+    	return false;
+    	
+    } // end isGameOver
 
     // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
     private int randomNumber(int max, int min){
@@ -86,7 +88,7 @@ public class BlockHandler {
         }
     }
 
-    //ohne �berpr�fung ob Absetzung
+    //ohne �berpr�fung ob Absetzung
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
     private void finalizeBlock(){
         //TODO stein verewigen

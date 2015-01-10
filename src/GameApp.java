@@ -28,11 +28,18 @@ public class GameApp {
 		z.printBlock();
 
 		Playground.printField();
-
+		
+		System.out.println("Shape of a sample stone: " + t.getShape());
+		
+		if(z.getShape() == Shape.Z)
+		{
+			System.out.println("Shape of another sample stone: " + z.getShape());
+		}
+			
 		/* while (!handler.isGameOver()) {
 			// hier laufen lassen:
 			// bewegung
-			// rotation
+			// rotation;
 			// automatische bewegung nach unten
 			// timer .............
 		 } */
