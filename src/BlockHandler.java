@@ -108,6 +108,7 @@ public class BlockHandler {
             	for (int j=0; j<current.block.length;j++){
             		if (current.block[i][j]){
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setFull();
+            			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setShape(current.getShape());
             		}
             	}
             }
