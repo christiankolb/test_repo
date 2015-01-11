@@ -25,17 +25,30 @@ public class BlockHandler {
         current.setPoscol(5- (current.getBlock().length/2));
     }
 
+    //random Bewegung des aktuellen Steines
     public void moveBlock(){
         int move = randomNumber(3,0);
-
-        for(int i = 0; i < move; i++){
-            //TODO move block
-            waitFor();
-        }
+        
+       
+        switch(move){
+        case 0:
+        	 //Bewegung nach links
+            current.moveLeft(field);
+        case 1:
+        	 //Bewegung nach rechts
+            current.moveRight(field);
+        default :
+        	 //Bewegung nach unten (zusätzlich)
+            current.moveDown(field);
+            
+            //Bei 3 keine Bewegung:
+    }
+        finalizeBlock();
     }
 
-    public void moveDown(){
-      //TODO  block um 1 nach unten
+    public void standardMoveDown(){
+    	current.moveDown(field);
+      finalizeBlock();
     }
 
     // random drehen von aktuellem Stein
@@ -45,18 +58,19 @@ public class BlockHandler {
         // drehung nach links
         if(rotation >= -4 && rotation < 0){
             for(int i = 0; i < rotation * -1; i++){
-                boolean[][] rotated = current.rotateLeft();
-                field.isPossible(rotated, current);
+              current.rotateLeft(field);
+                
             }
         }
 
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
             for(int i = 0; i < rotation * -1; i++){
-                boolean[][] rotated=  current.rotateRight();
-                field.isPossible(rotated, current);
+                 current.rotateRight(field);
+               
             }
         }
+        finalizeBlock();
     }
 
     //nach jeder aktion checken ob gameover
@@ -86,14 +100,22 @@ public class BlockHandler {
         }
     }
 
-    //ohne ï¿½berprï¿½fung ob Absetzung
+
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen lÃ¶schen
     private void finalizeBlock(){
+    	if(current.getPosrow()+1>23){ 
+            for (int i=0;i<current.block.length;i++){
+            	for (int j=0; j<current.block.length;j++){
+            		if (current.block[i][j]){
+            			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setFull();
+            		}
+            	}
+            }
+            currentFinished = true;
+            field.deleteFullRows();
+    	}
 
-        //TODO
-
-        currentFinished = true;
-        field.deleteFullRows();
+        
     }
 
     public boolean getCurrentFinished(){

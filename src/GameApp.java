@@ -24,7 +24,7 @@ public class GameApp {
 
 			while(!handler.getCurrentFinished()) {
 
-				handler.moveDown();
+				handler.standardMoveDown();
 				handler.waitFor();
 
 				handler.moveBlock(); //waitFor() wird in moveBlock aufgerufen

@@ -15,12 +15,12 @@ public class Block_O extends Block {
 	}
 
 	@Override
-	public boolean[][] rotateRight() {
-		return block;
+	public void rotateRight(Field field) {
+		
 	}
 
 	@Override
-	public boolean[][] rotateLeft() {
-		return block;
+	public void rotateLeft(Field field) {
+	
 	}
 }
