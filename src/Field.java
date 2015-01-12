@@ -6,11 +6,8 @@
 public class Field {
 
 	private final int TOTAL_HEIGHT = 26;
-	private final int HEIGHT = 20;
-	private final int WIDTH = 10;
 	private final int TOTAL_WIDTH = 14;
 	private Cell[][] field;
-
 
 	public Field() {
 		field = new Cell[TOTAL_HEIGHT][TOTAL_WIDTH];
@@ -27,13 +24,15 @@ public class Field {
 
 	public void deleteFullRows() {
 		boolean isFull;
+		boolean skip;
 		for (int i = 4; i < TOTAL_HEIGHT - 2; i++) {
 			isFull = false;
+			skip = false;
 			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
-				if (!field[i][j].getIsEmpty()) {
-					isFull = true;
-				} else {
+				if(skip){j++;}
+				if (field[i][j].getIsEmpty()) {
 					isFull = false;
+					skip = true;
 				}
 			}
 			if (isFull) {
@@ -43,13 +42,12 @@ public class Field {
 					for (int l = 0; l < TOTAL_WIDTH; l++) {
 						rowprev[l] = field[k - 1][l];
 						rownext[l] = field[k][l];
-						field[k][l]= rowprev[l]; //war auskommentiert -> ev weil zuvor falsch geschrieben ("roprev")
+						field[k][l]= rowprev[l];
 					}
 				}
 				System.out.println("Vollständige Reihe aufgelöst.");
 			}
 		}
-
 	}
 
 
@@ -88,26 +86,10 @@ public class Field {
 						System.out.print("Z");
 					}
 				}
+
 			}
 		}
 		System.out.print("\n");
 
 	} // end printField
-
-/*
-	public void printField() {
-		System.out.print("\n");
-		for (int i = 0; i < field.length; i++){
-			System.out.print("\n");
-			for (int j = 0; j < field[i].length; j++) {
-				if (field[i][j].getIsEmpty()) {
-					System.out.print('o');
-				} else {
-					System.out.print('x');
-				}
-			}
-		}
-		System.out.print("\n");
-
-	}*/
 }

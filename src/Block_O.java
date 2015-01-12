@@ -18,11 +18,11 @@ public class Block_O extends Block {
 
 	@Override
 	public void rotateRight(Field field) {
-		
+	//do nothing
 	}
 
 	@Override
 	public void rotateLeft(Field field) {
-	
+	//do nothing
 	}
 }

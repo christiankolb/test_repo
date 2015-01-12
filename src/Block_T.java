@@ -5,7 +5,7 @@ public class Block_T extends Block {
 
 	public Block_T(Shape s) {
 		super(s);
-		block = new boolean[3][3];
+		block = new boolean[2][3];
 		block[0][0] = true;
 		block[0][1] = true;
 		block[0][2] = true;

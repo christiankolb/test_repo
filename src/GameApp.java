@@ -10,17 +10,21 @@ public class GameApp {
 
 
 
-while(!handler.isGameOver()){
-	handler.spawnNextBlock();
-	while(!handler.getCurrentFinished()) {
+	while(!handler.isGameOver()){
+		handler.spawnNextBlock();
 
-		handler.waitFor();
-		handler.standardMoveDown();
-		handler.moveBlock();
-	//	handler.rotateBlock();
+		//handler.rotateBlock();
+	//	handler.moveBlock();
+		while(!handler.getCurrentFinished()) {
 
+			handler.waitFor();
+			handler.standardMoveDown();
+			handler.moveBlock();
+		//	handler.rotateBlock();
+
+		}
+
+			field.printField();
+		}
 	}
-
-		field.printField();
-	}
-}}
+}

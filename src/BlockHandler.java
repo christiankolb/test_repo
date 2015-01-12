@@ -9,7 +9,7 @@ public class BlockHandler {
     private int randomNum;
     private Field field;
     private BlockFactory factory;
-    private final int MILLIS = 100; //Wartezeit
+    private final int MILLIS = 10; //Wartezeit
     private Block current;
     private boolean currentFinished; // zur überprüfung, ob stein abgesetzt
 
@@ -22,42 +22,37 @@ public class BlockHandler {
 
     public void spawnNextBlock(){
         currentFinished = false;
-        current = factory.createNewBlock(randomNumber(6,0));
+      current = factory.createNewBlock(randomNumber(6,0));
+        //current = factory.createNewBlock(5);
         current.setPosrow(0);
-        current.setPoscol(5- (current.getBlock().length/2));
+        current.setPoscol(4 + (current.getBlock()[0].length)/2);
     }
 
     //random Bewegung des aktuellen Steines
     public void moveBlock(){
-        int move = randomNumber(3,0);
-        
-       
+        //int move = randomNumber(1,0);
+int move = 0;
         switch(move){
             case 0:
                  //Bewegung nach links
                 current.moveLeft(field);
                 System.out.println("moveBlock() moving left");
+                break;
             case 1:
                  //Bewegung nach rechts
                 current.moveRight(field);
-                System.out.println("moveBlock() moving left");
-            case 2:
-                 //Bewegung nach unten (zus�tzlich)
-                current.moveDown(field);
-                System.out.println("moveBlock() moving down");
-
-                //Bei 3 keine Bewegung:
+                System.out.println("moveBlock() moving right");
+                break;
+            default:
+                break;
         }
         finalizeBlock();
     }
 
     public void standardMoveDown(){
-
         current.moveDown(field);
         System.out.println("moving down");
         finalizeBlock();
-
-
     }
 
     // random drehen von aktuellem Stein
@@ -79,7 +74,7 @@ public class BlockHandler {
                
             }
         }
-        //finalizeBlock();
+        finalizeBlock();
     }
 
     //nach jeder aktion checken ob gameover
@@ -116,7 +111,7 @@ public class BlockHandler {
     	//if(current.getPosrow()+1>23){
             System.out.println("finalizeBlock entering if");
             for (int i=0;i<current.block.length;i++){
-            	for (int j=0; j<current.block.length;j++){
+            	for (int j=0; j<current.block[0].length;j++){
             		if (current.block[i][j]){
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setFull();
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setShape(current.getShape());
@@ -125,7 +120,7 @@ public class BlockHandler {
             }
             currentFinished = true;
             field.deleteFullRows();
-            System.out.println("Finalizing current block");
+            System.out.println("Finalized current block");
     	}//end if
     }
 
