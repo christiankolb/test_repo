@@ -98,21 +98,24 @@ public abstract class Block {
 		boolean possible=true;
 		int x = 0;
 
-		if(this.posrow+this.block.length >= 24){
+		if(this.posrow+this.block.length == 24){
 			possible = false;
-			finished = true;
+			this.finished = true;
 		}
 
 		if(possible){
-		for (int i = this.poscol; i < this.poscol+this.block[0].length; i++){
-
-			if(!field.isCellEmpty(this.posrow+this.block.length, i)) {
-				if(this.block[this.block.length-1][x]) {
-					possible = false;
-					finished = true;
+			for (int j= 0; j<this.block.length-1; j++){
+				for (int i = 0; i < this.block[0].length-1; i++){
+					//if(!field.isCellEmpty(this.posrow+this.block.length, i)) {
+			//	if(this.block[][x]) {
+					if (this.block[j][i]){
+						if (!field.isCellEmpty(this.posrow+j+1, this.poscol+i)){
+							possible = false;
+							this.finished = true;
+						}
+					}
+			//x++;
 				}
-			}
-			x++;
 		}}
 
 		if (possible){
