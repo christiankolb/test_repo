@@ -18,9 +18,10 @@ public class GameApp {
 		while(!handler.getCurrentFinished()) {
 
 			handler.waitFor();
+		//	handler.moveBlock();
 			handler.standardMoveDown();
-			handler.moveBlock();
-		//	handler.rotateBlock();
+
+			handler.rotateBlock();
 
 		}
 

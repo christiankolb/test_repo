@@ -31,17 +31,15 @@ public class BlockHandler {
     //random Bewegung des aktuellen Steines
     public void moveBlock(){
         //int move = randomNumber(1,0);
-int move = 0;
+        int move = 1;
         switch(move){
             case 0:
                  //Bewegung nach links
                 current.moveLeft(field);
-                System.out.println("moveBlock() moving left");
                 break;
             case 1:
                  //Bewegung nach rechts
                 current.moveRight(field);
-                System.out.println("moveBlock() moving right");
                 break;
             default:
                 break;
@@ -51,7 +49,6 @@ int move = 0;
 
     public void standardMoveDown(){
         current.moveDown(field);
-        System.out.println("moving down");
         finalizeBlock();
     }
 
@@ -109,7 +106,6 @@ int move = 0;
     private void finalizeBlock(){
     	if(current.finished){
     	//if(current.getPosrow()+1>23){
-            System.out.println("finalizeBlock entering if");
             for (int i=0;i<current.block.length;i++){
             	for (int j=0; j<current.block[0].length;j++){
             		if (current.block[i][j]){
@@ -120,7 +116,6 @@ int move = 0;
             }
             currentFinished = true;
             field.deleteFullRows();
-            System.out.println("Finalized current block");
     	}//end if
     }
 
