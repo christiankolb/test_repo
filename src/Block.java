@@ -7,8 +7,8 @@ public abstract class Block {
 	
 	//////////////////////////////////
 	// Position im Feld vom Quadrat-Block des ersten K�stchens oben links
-	private int posrow = 0;
-	private int poscol = 0;
+	protected int posrow = 0;
+	protected int poscol = 0;
 	/////////////////////////////////
 	protected Shape shape;
 	public boolean finished;
@@ -98,7 +98,7 @@ public abstract class Block {
 		boolean possible=true;
 		int x = 0;
 
-		if(this.posrow+this.block.length == 24){
+		if(this.posrow+this.block.length >= 24){
 			possible = false;
 			finished = true;
 		}
@@ -107,7 +107,7 @@ public abstract class Block {
 		for (int i = this.poscol; i < this.poscol+this.block[0].length; i++){
 
 			if(!field.isCellEmpty(this.posrow+this.block.length, i)) {
-				if(block[block.length-1][x]) {
+				if(this.block[this.block.length-1][x]) {
 					possible = false;
 					finished = true;
 				}
