@@ -82,13 +82,13 @@ public abstract class Block {
 		//bewegt das Array um 1 Position nach unten
 		public void moveDown(Field field){
 			boolean possible=true;
-			if (this.posrow+1==24){
+			if (this.posrow+this.block.length==24){
 				for (int i=0; i< this.block.length;i++){
 						if (this.block[this.block.length-1][i]){
 							possible=false;
 						}
 				}
-			} else if (this.posrow+1==25){
+			} else if (this.posrow+this.block.length==25){
 						for (int i=this.block.length-1; i>=this.block.length-2;i--){
 							for (int j=0; j< this.block.length; j++){
 								if(this.block[i][j]){
