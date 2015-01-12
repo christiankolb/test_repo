@@ -11,5 +11,6 @@ public class Block_L extends Block {
 		block[2][1] = true;
 		block[2][2] = true;
 
+		System.out.println("New L");
 	}
 }

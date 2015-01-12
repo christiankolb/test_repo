@@ -10,5 +10,7 @@ public class Block_I extends Block {
         block[1][1] = true;
         block[2][1] = true;
         block[3][1] = true;
+
+        System.out.println("New I");
 	}
 }

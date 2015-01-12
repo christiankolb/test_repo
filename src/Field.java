@@ -21,12 +21,12 @@ public class Field {
 		}
 	} // end field
 
-	public boolean isCellEmpty(int x, int y) {
-		return field[x][y].getIsEmpty();
+	public boolean isCellEmpty(int i, int j) {
+		return field[i][j].getIsEmpty();
 	}
 
 	public void deleteFullRows() {
-		boolean isFull = false;
+		boolean isFull;
 		for (int i = 4; i < TOTAL_HEIGHT - 2; i++) {
 			isFull = false;
 			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
@@ -60,16 +60,33 @@ public class Field {
 
 	public void printField() {
 		System.out.print("\n");
-		for (int i = 4; i < TOTAL_HEIGHT - 2; i++) // 4 wegen dem "unsichtbaren" Bereich
-		{
+		for (int i = 4; i < TOTAL_HEIGHT - 2; i++){ // 4 wegen dem "unsichtbaren" Bereich
 			System.out.print("\n");
-
 			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
 				if (field[i][j].getIsEmpty()) {
-					System.out.print('o');
+					System.out.print('.');
 				} else {
-
-					System.out.print('x');
+					if(field[i][j].getShape() == Shape.I){
+						System.out.print("I");
+					}
+					if(field[i][j].getShape() == Shape.J){
+						System.out.print("J");
+					}
+					if(field[i][j].getShape() == Shape.L){
+						System.out.print("L");
+					}
+					if(field[i][j].getShape() == Shape.O){
+						System.out.print("O");
+					}
+					if(field[i][j].getShape() == Shape.S){
+						System.out.print("S");
+					}
+					if(field[i][j].getShape() == Shape.T){
+						System.out.print("T");
+					}
+					if(field[i][j].getShape() == Shape.Z){
+						System.out.print("Z");
+					}
 				}
 			}
 		}
@@ -77,4 +94,20 @@ public class Field {
 
 	} // end printField
 
+/*
+	public void printField() {
+		System.out.print("\n");
+		for (int i = 0; i < field.length; i++){
+			System.out.print("\n");
+			for (int j = 0; j < field[i].length; j++) {
+				if (field[i][j].getIsEmpty()) {
+					System.out.print('o');
+				} else {
+					System.out.print('x');
+				}
+			}
+		}
+		System.out.print("\n");
+
+	}*/
 }

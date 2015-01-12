@@ -9,9 +9,10 @@ public class BlockHandler {
     private int randomNum;
     private Field field;
     private BlockFactory factory;
-    private final int MILLIS = 1000; //Wartezeit
+    private final int MILLIS = 100; //Wartezeit
     private Block current;
     private boolean currentFinished; // zur überprüfung, ob stein abgesetzt
+
 
     public BlockHandler(Field field){
         rand = new Random();
@@ -20,6 +21,7 @@ public class BlockHandler {
     }
 
     public void spawnNextBlock(){
+        currentFinished = false;
         current = factory.createNewBlock(randomNumber(6,0));
         current.setPosrow(0);
         current.setPoscol(5- (current.getBlock().length/2));
@@ -31,24 +33,31 @@ public class BlockHandler {
         
        
         switch(move){
-        case 0:
-        	 //Bewegung nach links
-            current.moveLeft(field);
-        case 1:
-        	 //Bewegung nach rechts
-            current.moveRight(field);
-        default :
-        	 //Bewegung nach unten (zus�tzlich)
-            current.moveDown(field);
-            
-            //Bei 3 keine Bewegung:
-    }
+            case 0:
+                 //Bewegung nach links
+                current.moveLeft(field);
+                System.out.println("moveBlock() moving left");
+            case 1:
+                 //Bewegung nach rechts
+                current.moveRight(field);
+                System.out.println("moveBlock() moving left");
+            case 2:
+                 //Bewegung nach unten (zus�tzlich)
+                current.moveDown(field);
+                System.out.println("moveBlock() moving down");
+
+                //Bei 3 keine Bewegung:
+        }
         finalizeBlock();
     }
 
     public void standardMoveDown(){
-    	current.moveDown(field);
-      finalizeBlock();
+
+        current.moveDown(field);
+        System.out.println("moving down");
+        finalizeBlock();
+
+
     }
 
     // random drehen von aktuellem Stein
@@ -70,7 +79,7 @@ public class BlockHandler {
                
             }
         }
-        finalizeBlock();
+        //finalizeBlock();
     }
 
     //nach jeder aktion checken ob gameover
@@ -103,24 +112,9 @@ public class BlockHandler {
 
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
     private void finalizeBlock(){
-    	boolean finalize=false;
-    	
-    	if (current.getPosrow()+current.getBlock().length==24){
-			for (int i=0; i<  current.getBlock().length;i++){
-					if (current.getBlock()[current.getBlock().length-1][i]){
-						finalize=true;
-					}
-			}
-		} else if (current.getPosrow()+current.getBlock().length==25){
-					for (int i=current.getBlock().length-1; i>=current.getBlock().length-2;i--){
-						for (int j=0; j< current.getBlock().length; j++){
-							if(current.getBlock()[i][j]){
-								finalize=true;
-						}
-					}
-			}
-		}
-    	if(finalize){ 
+    	if(current.finished){
+    	//if(current.getPosrow()+1>23){
+            System.out.println("finalizeBlock entering if");
             for (int i=0;i<current.block.length;i++){
             	for (int j=0; j<current.block.length;j++){
             		if (current.block[i][j]){
@@ -131,9 +125,8 @@ public class BlockHandler {
             }
             currentFinished = true;
             field.deleteFullRows();
-    	}
-
-        
+            System.out.println("Finalizing current block");
+    	}//end if
     }
 
     public boolean getCurrentFinished(){

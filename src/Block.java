@@ -5,10 +5,14 @@ public abstract class Block {
 
 	protected boolean[][] block;
 	
-	//Position im Feld vom Quadrat-Block des ersten Kästchens oben links
+	//////////////////////////////////
+	// Position im Feld vom Quadrat-Block des ersten Kï¿½stchens oben links
 	private int posrow = 0;
 	private int poscol = 0;
+	/////////////////////////////////
 	protected Shape shape;
+
+	public boolean finished;
 
 	public Block(Shape s)
 	{
@@ -83,16 +87,22 @@ public abstract class Block {
 		public void moveDown(Field field){
 			boolean possible=true;
 			if (this.posrow+this.block.length==24){
+				System.out.println("this.posrow+this.block.length==24");
 				for (int i=0; i< this.block.length;i++){
 						if (this.block[this.block.length-1][i]){
+							System.out.println("setting possible false");
 							possible=false;
+							finished = true;
 						}
 				}
 			} else if (this.posrow+this.block.length==25){
-						for (int i=this.block.length-1; i>=this.block.length-2;i--){
+				System.out.println("this.posrow+this.block.length==25");
+						for (int i=this.block.length-2; i>=this.block.length-2;i--){
 							for (int j=0; j< this.block.length; j++){
 								if(this.block[i][j]){
+									System.out.println("setting possible false");
 									possible=false;
+									finished = true;
 							}
 						}
 				}
@@ -103,12 +113,15 @@ public abstract class Block {
 			for (int j=this.poscol; j<this.poscol+this.block.length;j++){
 				if (!field.isCellEmpty(i, j)){
 					possible=false;
+					finished = true;
+					break;
 				}
 			}
 		}
 		if (possible){
-		this.posrow=this.posrow+1;
+			this.posrow=this.posrow+1;
 		}
+
 	}
 
 		
