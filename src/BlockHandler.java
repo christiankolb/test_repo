@@ -103,7 +103,24 @@ public class BlockHandler {
 
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
     private void finalizeBlock(){
-    	if(current.getPosrow()+1>23){ 
+    	boolean finalize=false;
+    	
+    	if (current.getPosrow()+current.getBlock().length==24){
+			for (int i=0; i<  current.getBlock().length;i++){
+					if (current.getBlock()[current.getBlock().length-1][i]){
+						finalize=true;
+					}
+			}
+		} else if (current.getPosrow()+current.getBlock().length==25){
+					for (int i=current.getBlock().length-1; i>=current.getBlock().length-2;i--){
+						for (int j=0; j< current.getBlock().length; j++){
+							if(current.getBlock()[i][j]){
+								finalize=true;
+						}
+					}
+			}
+		}
+    	if(finalize){ 
             for (int i=0;i<current.block.length;i++){
             	for (int j=0; j<current.block.length;j++){
             		if (current.block[i][j]){
