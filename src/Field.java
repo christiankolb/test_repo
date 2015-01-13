@@ -1,7 +1,9 @@
 /**
- * Created by patrick on 18.12.14.
+ * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * Tetris @version 1.0
+ * 
+ * @linkPlain Cell.Java 
  */
-
 
 public class Field {
 

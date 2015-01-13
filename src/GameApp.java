@@ -1,5 +1,8 @@
 /**
  * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * Tetris @version 1.0
+ * 
+ * Dies ist die Testklasse des Tetrisspiels mit der main-Methode
  * 
  */
 public class GameApp {
