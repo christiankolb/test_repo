@@ -12,17 +12,15 @@ public class Block_O extends Block {
 		block[0][1] = true;
 		block[1][0] = true;
 		block[1][1] = true;
-
-		System.out.println("New O");
 	}
 
 	@Override
-	public void rotateRight(Field field) {
-	//do nothing
+	public boolean rotateRight(Field field) {
+		return true;
 	}
 
 	@Override
-	public void rotateLeft(Field field) {
-	//do nothing
+	public boolean rotateLeft(Field field) {
+		return true;
 	}
 }

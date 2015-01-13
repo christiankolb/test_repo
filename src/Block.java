@@ -56,7 +56,7 @@ public abstract class Block {
 	* bewegt das Array um 1 Position nach unten
 	*/
 	////// Patricks Version
-	public void moveDown(Field field){
+	public boolean moveDown(Field field){
 		boolean possible=true;
 		int x = 0;
 
@@ -69,9 +69,7 @@ public abstract class Block {
 			for(int i = 0; i < block.length; i++){
 				for(int j = 0; j < block[0].length; j++){
 					if(block[i][j]){
-						//System.out.println("block i j true @"+ i +" "+ j);
 						if(!field.isCellEmpty(posrow+i+1, poscol+j)){
-							//System.out.println("field not empty at " + (posrow+block.length) + " " + (poscol+j));
 							possible = false;
 							finished = true;
 						}
@@ -82,7 +80,9 @@ public abstract class Block {
 
 		if (possible){
 			this.posrow++;
-			System.out.println("moving down");
+			return true;
+		}else{
+			return false;
 		}
 	}
 
@@ -93,7 +93,7 @@ public abstract class Block {
 	* BUGGY bewegt das Array um 1 Position nach rechts
 	*/
 	//////Patricks Version
-	public void moveRight(Field field){
+	public boolean moveRight(Field field){
 
 		boolean possible=true;
 
@@ -115,7 +115,9 @@ public abstract class Block {
 
 		if (possible){
 			this.poscol++;
-			System.out.println("moving right");
+			return true;
+		}else{
+			return false;
 		}
 	}
 
@@ -123,7 +125,7 @@ public abstract class Block {
 	* bewegt das Array um 1 Position nach links
 	*/
 	//////Patricks Version
-	public void moveLeft(Field field){
+	public boolean moveLeft(Field field){
 
 		boolean possible = true;
 
@@ -144,7 +146,9 @@ public abstract class Block {
 		}
 		if (possible){
 			this.poscol=this.poscol-1;
-			System.out.println("moving left");
+			return true;
+		}else{
+			return false;
 		}
 	}
 
@@ -152,33 +156,33 @@ public abstract class Block {
 	/*
 	* rotiert array nach rechts
 	*/
-	public void rotateRight(Field field){
+	public boolean rotateRight(Field field){
 		boolean[][] rotated = new boolean[this.block[0].length][this.block.length];
 		for(int i = 0; i < this.block.length; i++){
 			for(int j = 0; j < this.block[0].length; j++){
 				rotated[j][this.block.length-i-1] = this.block[i][j];
 			}
 		}
-		this.isRotationPossible(rotated, field, "rechts");
+		return this.isRotationPossible(rotated, field);
 	}
 
 	/*
 	* rotiert array nach links
 	*/
-	public void rotateLeft(Field field){
+	public boolean rotateLeft(Field field){
 		boolean[][] rotated = new boolean[this.block[0].length][this.block.length];
 		for(int i = 0; i < this.block.length; i++){
 			for(int j = 0; j < this.block[0].length; j++){
 				rotated[this.block[0].length-j-1][i] = this.block[i][j];
 			}
 		}
-		this.isRotationPossible(rotated, field, "links");
+		return this.isRotationPossible(rotated, field);
 	}
 
 	/*
 	*	überprüfen ob drehung möglich
 	*/
-	public void isRotationPossible(boolean[][] rotated,Field field, String direction) {
+	public boolean isRotationPossible(boolean[][] rotated,Field field) {
 		boolean possible = true;
 		boolean chpos = false;
 		int newposcol = this.getPoscol();
@@ -251,12 +255,14 @@ public abstract class Block {
 			this.block=rotated;
 			this.poscol=newposcol;
 			this.posrow=newposrow;
-			System.out.println("Rotation nach +" + direction + "+ wurde erfolgreich ausgeführt.");
+			//System.out.println("Rotation um 90° nach " + direction);
 			if(chpos){
-				System.out.println("Stein wurde dabei ins Spielfeld gezogen.");
+				System.out.println("Stein wurde für die folgende Rotation ins Spielfeld gezogen");
 			}
+			return true;
 		} else {
-			System.out.println("Rotation nicht möglich.");
+			//System.out.println("Rotation nach "+ direction +" nicht möglich");
+			return false;
 		}
 	}
 

@@ -11,6 +11,5 @@ public class Block_Z extends Block {
         block[1][1] = true;
         block[1][2] = true;
 
-        System.out.println("New Z");
     }
 }

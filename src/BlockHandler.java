@@ -9,7 +9,6 @@ public class BlockHandler {
     private int randomNum;
     private Field field;
     private BlockFactory factory;
-    private final int MILLIS = 10; //Wartezeit
     private Block current;
     private boolean currentFinished; // zur überprüfung, ob stein abgesetzt
 
@@ -22,25 +21,44 @@ public class BlockHandler {
 
     public void spawnNextBlock(){
         currentFinished = false;
-      current = factory.createNewBlock(randomNumber(6,0));
-        //current = factory.createNewBlock(5);
+        current = factory.createNewBlock(randomNumber(6,0));
         current.setPosrow(0);
         current.setPoscol(4 + (current.getBlock()[0].length)/2);
+        System.out.println("\nNeuer Block: " + current.getShape() + ", an der Position  " + current.getPoscol() + "/" + current.getPosrow());
     }
 
     //random Bewegung des aktuellen Steines
     public void moveBlock(){
-        int move = randomNumber(1,0);
-        //int move = 0;
-        switch(move){
+        int moveDir = randomNumber(2,0);
+        int moveDis = randomNumber(5,0);
+
+        switch(moveDir){
             case 0:
                  //Bewegung nach links
-                current.moveLeft(field);
+                System.out.println("Versuche Bewegung um " + moveDis + " nach links");
+                for(int i = 0; i < moveDis; i++) {
+                    if(!current.moveLeft(field)){
+                        System.out.println("-- Bewegung um 1 nach links nicht möglich");
+                    }else{
+                       System.out.println("-- Bewegung um 1 nach links ausgeführt");
+                    }
+                }
                 break;
             case 1:
                  //Bewegung nach rechts
                 current.moveRight(field);
+                System.out.println("Versuche Bewegung um " + moveDis + " nach rechts");
+                for(int i = 0; i < moveDis; i++) {
+                    if(!current.moveRight(field)){
+                        System.out.println("-- Bewegung um 1 nach rechts nicht möglich");
+                    }else{
+                        System.out.println("-- Bewegung um 1 nach rechts ausgeführt");
+                    }
+                }
                 break;
+            case 2:
+                //Bewegung nach unten
+                current.moveDown(field);
             default:
                 break;
         }
@@ -48,31 +66,63 @@ public class BlockHandler {
     }
 
     public void standardMoveDown(){
-        current.moveDown(field);
+        if(!current.moveDown(field)){
+            System.out.println("Bewegung nach unten nicht möglich");
+        }
         finalizeBlock();
     }
 
     // random drehen von aktuellem Stein
     public void rotateBlock(){
         int rotation = randomNumber(4,-4);
-        //System.out.println(rotation);
+        boolean rotated;
 
         // drehung nach links
         if(rotation >= -4 && rotation < 0){
+            System.out.println("Versuche Rotation um " + getDegree(rotation) + "° gegen den UZS");
             for(int i = 0; i < rotation * -1; i++){
-              current.rotateLeft(field);
-                
+                if(!current.rotateLeft(field)){
+                    System.out.println("-- Rotation nach links nicht möglich");
+                }else{
+                    System.out.println("-- Rotation nach links ausgeführt");
+                }
             }
         }
 
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
-            for(int i = 0; i < rotation * -1; i++){
-                 current.rotateRight(field);
-               
+            System.out.println("Versuche Rotation um " + getDegree(rotation) + "° im UZS");
+            for(int i = 0; i < rotation; i++){
+                if(!current.rotateRight(field)){
+                    System.out.println("-- Rotation nach rechts nicht möglich");
+                }else{
+                    System.out.println("-- Rotation nach rechts ausgeführt");
+                }
             }
         }
         finalizeBlock();
+    }
+
+    private int getDegree(int x){
+        int y = 0;
+        switch(x){
+            case -4:case 4:
+                y = 360;
+                break;
+            case -3:case 3:
+                y = 270;
+                break;
+            case -2:case 2:
+                y =  180;
+                break;
+            case -1:case 1:
+                y = 90;
+                break;
+            case 0:
+                y = 0;
+                break;
+        }
+        return y;
     }
 
     //nach jeder aktion checken ob gameover
@@ -93,26 +143,15 @@ public class BlockHandler {
         return randomNum;
     }
 
-    // stoppt die ausführung für bestimmte zeit
-    public void waitFor() {
-        try {
-            Thread.sleep(MILLIS);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
 
     // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
     private void finalizeBlock(){
     	if(current.finished){
-    	//if(current.getPosrow()+1>23){
             for (int i=0;i<current.block.length;i++){
             	for (int j=0; j<current.block[0].length;j++){
             		if (current.block[i][j]){
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setFull();
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setShape(current.getShape());
-                        System.out.println(current.getShape());
             		}
             	}
             }

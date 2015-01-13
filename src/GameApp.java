@@ -8,25 +8,22 @@ public class GameApp {
 		Field field = new Field();
 		BlockHandler handler = new BlockHandler(field);
 
+		while(!handler.isGameOver()){
+			handler.spawnNextBlock();
 
-
-	while(!handler.isGameOver()){
-		handler.spawnNextBlock();
-
-		//handler.rotateBlock();
-	//	handler.moveBlock();
-		while(!handler.getCurrentFinished()) {
-
-			handler.waitFor();
-			handler.moveBlock();
+			handler.standardMoveDown();
+			handler.standardMoveDown();
 			handler.standardMoveDown();
 
-		//	handler.rotateBlock();
+			handler.moveBlock();
+			handler.rotateBlock();
 
+
+			while(!handler.getCurrentFinished()) {
+				handler.standardMoveDown();
+			}
 		}
-
-			field.printField();
-		}
-
+		System.out.println("*** GAMEOVER ***");
+		field.printField();
 	}
 }

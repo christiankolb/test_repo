@@ -58,7 +58,7 @@ public class Field {
 
 	public void printField() {
 		System.out.print("\n");
-		for (int i = 4; i < TOTAL_HEIGHT - 2; i++){ // 4 wegen dem "unsichtbaren" Bereich
+		for (int i = 4; i < TOTAL_HEIGHT - 2; i++){
 			System.out.print("\n");
 			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
 				if (field[i][j].getIsEmpty()) {
@@ -92,41 +92,4 @@ public class Field {
 		System.out.print("\n");
 
 	} // end printField
-/*
-	public void printField() {
-		System.out.print("\n");
-		for (int i = 0; i < TOTAL_HEIGHT; i++){ // 4 wegen dem "unsichtbaren" Bereich
-			System.out.print("\n");
-			for (int j = 0; j < TOTAL_WIDTH; j++) {
-				if (field[i][j].getIsEmpty()) {
-					System.out.print('.');
-				} else {
-					if(field[i][j].getShape() == Shape.I){
-						System.out.print("I");
-					}
-					if(field[i][j].getShape() == Shape.J){
-						System.out.print("J");
-					}
-					if(field[i][j].getShape() == Shape.L){
-						System.out.print("L");
-					}
-					if(field[i][j].getShape() == Shape.O){
-						System.out.print("O");
-					}
-					if(field[i][j].getShape() == Shape.S){
-						System.out.print("S");
-					}
-					if(field[i][j].getShape() == Shape.T){
-						System.out.print("T");
-					}
-					if(field[i][j].getShape() == Shape.Z){
-						System.out.print("Z");
-					}
-				}
-
-			}
-		}
-		System.out.print("\n");
-
-	} // end printField*/
 }

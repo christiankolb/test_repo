@@ -10,7 +10,5 @@ public class Block_S extends Block {
 		block[0][2] = true;
 		block[1][0] = true;
 		block[1][1] = true;
-
-		System.out.println("New S");
 	}
 }
