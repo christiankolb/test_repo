@@ -2,11 +2,16 @@
  * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  * Tetris @version 1.0
  * 
+ */
+
+public class GameApp {
+
+/**
  * Dies ist die Testklasse des Tetrisspiels mit der main-Methode
  * 
  */
-public class GameApp {
-
+	
+	
 	public static void main(String[] args) {
 
 		Field field = new Field();

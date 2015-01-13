@@ -1,6 +1,7 @@
 /**
  * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  * Tetris @version 1.0
+ * 
  */
 public class Cell {
 	/**
