@@ -5,8 +5,8 @@
  */
 public class Cell {
 	/**
-	 * Objekte dieser Klasse sind die Bestandteile des Spielfelds @see Field.java
-	 * @link Field.java
+	 * Objekte dieser Klasse sind die Bestandteile des Spielfelds 
+	 * @link Field
 	 * @param s  = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt @see Shape
 	 */
     private Shape s;  
@@ -14,8 +14,8 @@ public class Cell {
 
     /**
 	 * @param isEmpty  = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt 
-	 * @see Shape.java
 	 * @see Shape
+	 * @linkPlain BlockHandler
 	 */
     
     public Cell(){
