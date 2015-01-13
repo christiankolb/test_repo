@@ -15,6 +15,7 @@ public class BlockHandler {
 
 
     public BlockHandler(Field field){
+        rand = new Random();
         this.field = field;
         factory = new BlockFactory();
     }
@@ -30,7 +31,7 @@ public class BlockHandler {
     //random Bewegung des aktuellen Steines
     public void moveBlock(){
         int move = randomNumber(1,0);
-       // int move = 1;
+        //int move = 0;
         switch(move){
             case 0:
                  //Bewegung nach links
@@ -41,7 +42,6 @@ public class BlockHandler {
                 current.moveRight(field);
                 break;
             default:
-            	current.moveDown(field);
                 break;
         }
         finalizeBlock();
@@ -55,6 +55,7 @@ public class BlockHandler {
     // random drehen von aktuellem Stein
     public void rotateBlock(){
         int rotation = randomNumber(4,-4);
+        //System.out.println(rotation);
 
         // drehung nach links
         if(rotation >= -4 && rotation < 0){
@@ -66,7 +67,7 @@ public class BlockHandler {
 
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
-            for(int i = 0; i < rotation ; i++){
+            for(int i = 0; i < rotation * -1; i++){
                  current.rotateRight(field);
                
             }
@@ -88,7 +89,6 @@ public class BlockHandler {
 
     // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
     private int randomNumber(int max, int min){
-    	rand= new Random();
         randomNum = rand.nextInt((max-min) + 1) + min;
         return randomNum;
     }
@@ -112,6 +112,7 @@ public class BlockHandler {
             		if (current.block[i][j]){
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setFull();
             			field.getField()[current.getPosrow()+i][current.getPoscol()+j].setShape(current.getShape());
+                        System.out.println(current.getShape());
             		}
             	}
             }

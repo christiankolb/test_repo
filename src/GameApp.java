@@ -16,17 +16,17 @@ public class GameApp {
 		//handler.rotateBlock();
 	//	handler.moveBlock();
 		while(!handler.getCurrentFinished()) {
-			handler.standardMoveDown();
+
 			handler.waitFor();
-
 			handler.moveBlock();
-			
+			handler.standardMoveDown();
 
-			handler.rotateBlock();
+		//	handler.rotateBlock();
 
 		}
 
 			field.printField();
 		}
+
 	}
 }

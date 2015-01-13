@@ -7,8 +7,8 @@ public abstract class Block {
 	
 	//////////////////////////////////
 	// Position im Feld vom Quadrat-Block des ersten K�stchens oben links
-	protected int posrow = 0;
-	protected int poscol = 0;
+	private int posrow = 0;
+	private int poscol = 0;
 	/////////////////////////////////
 	protected Shape shape;
 	public boolean finished;
@@ -55,44 +55,6 @@ public abstract class Block {
 	/*
 	* bewegt das Array um 1 Position nach unten
 	*/
-	////// Dragos Version
-
-	/*public void moveDown(Field field){
-		boolean possible=true;
-		if (this.posrow+1==24){
-			for (int i=0; i< this.block.length;i++){
-				if (this.block[this.block.length-1][i]){
-					possible=false;
-				}
-			}
-		} else if (this.posrow+1==25){
-			for (int i=this.block.length-1; i>=this.block.length-2;i--){
-				for (int j=0; j< this.block.length; j++){
-					if(this.block[i][j]){
-						possible=false;
-					}
-				}
-			}
-		}
-
-
-		for (int i=this.posrow+1; i<this.posrow+1+this.block.length; i++){
-			for (int j=this.poscol; j<this.poscol+this.block.length;j++){
-				if (!field.isCellEmpty(i, j)){
-					for (int k=0; i<this.block.length;i++){
-						if (this.block[this.block.length-1][k])possible=false;
-					}
-
-				}
-			}
-		}
-		if (possible){
-			this.posrow=this.posrow+1;
-		}
-	}
-
-*/
-
 	////// Patricks Version
 	public void moveDown(Field field){
 		boolean possible=true;
@@ -100,23 +62,23 @@ public abstract class Block {
 
 		if(this.posrow+this.block.length == 24){
 			possible = false;
-			this.finished = true;
+			finished = true;
 		}
 
 		if(possible){
-			for (int j= 0; j<this.block.length-1; j++){
-				for (int i = 0; i < this.block[0].length-1; i++){
-					//if(!field.isCellEmpty(this.posrow+this.block.length, i)) {
-			//	if(this.block[][x]) {
-					if (this.block[j][i]){
-						if (!field.isCellEmpty(this.posrow+j+1, this.poscol+i)){
+			for(int i = 0; i < block.length; i++){
+				for(int j = 0; j < block[0].length; j++){
+					if(block[i][j]){
+						//System.out.println("block i j true @"+ i +" "+ j);
+						if(!field.isCellEmpty(posrow+i+1, poscol+j)){
+							//System.out.println("field not empty at " + (posrow+block.length) + " " + (poscol+j));
 							possible = false;
-							this.finished = true;
+							finished = true;
 						}
 					}
-			//x++;
 				}
-		}}
+			}
+		}
 
 		if (possible){
 			this.posrow++;
@@ -131,136 +93,62 @@ public abstract class Block {
 	* BUGGY bewegt das Array um 1 Position nach rechts
 	*/
 	//////Patricks Version
-	/*public void moveRight(Field field){
+	public void moveRight(Field field){
 
 		boolean possible=true;
 
-		if (this.poscol+this.block[0].length ==12){
-			for (int i=0; i< this.block.length;i++){
-					if (!this.block[i][this.block[0].length-1]){
-						possible=false;
-					}
-			}
-		} else if (this.poscol+this.block[0].length==13){
-			for (int i=0; i< this.block.length; i++){
-				for (int j=this.block[0].length-1; j>=this.block[0].length-2;j--){
-					if(!this.block[i][j]){
-						possible=false;
+		if(poscol+block.length > 10){
+			possible = false;
+		}
+
+		if(possible){
+			for(int i = 0; i < block.length; i++){
+				for(int j = 0; j < block[0].length; j++){
+					if(block[i][j]){
+						if(! field.isCellEmpty(posrow+i, poscol+j+1)){
+							possible = false;
 						}
 					}
 				}
-			}
-
-		for (int j=this.poscol; j<this.poscol+this.block.length;j++){
-			if (!field.isCellEmpty(this.poscol+1, j)){
-				possible=false;
 			}
 		}
 
 		if (possible){
 			this.poscol++;
-		}
-	}*/
-
-	/*
-	* BUGGY bewegt das Array um 1 Position nach links
-	*
-	* //////Patricks Version
-	*
-	/*public void moveLeft(Field field){
-		boolean possible=true;
-		if (this.poscol-1 <= 1){
-			possible=false;
-		}
-
-		if(possible) {
-			int x = 0;
-			for (int j = posrow; j < posrow + block.length; j++) {
-				if (!field.isCellEmpty(j, poscol - 1)) {
-					if (block[x][0]) {
-						possible = false;
-					}
-					x++;
-				}
-			}
-		}
-		if (possible){
-			this.poscol=this.poscol-1;
-			System.out.println("moving left");
-		}
-	}*/
-
-	///// Dragos Version
-	//bewegt das Array um 1 Position nach links
-	public void moveLeft(Field field){
-		boolean possible=true;
-		if (this.poscol-1==1){
-			for (int i=0; i< this.block.length;i++){
-				if (this.block[i][0]){
-					possible=false;
-				}
-			}
-		} else if (this.poscol-1==0){
-			for (int i=0; i< this.block.length; i++){
-				for (int j=0; j<2; j++){
-					if(this.block[i][j]){
-						possible=false;
-					}
-				}
-			}
-		}
-
-		for (int i=this.posrow; i<this.posrow+this.block.length; i++){
-			for (int j=this.poscol-1; j<this.poscol-1+this.block.length;j++){
-				if (!field.isCellEmpty(i, j)){
-					possible=false;
-				}
-			}
-		}
-		if (possible){
-			this.poscol=this.poscol-1;
-			System.out.println("moving left");
-		}
-	}
-
-	////// Dragos Version
-	//bewegt das Array um 1 Position nach rechts
-	public void moveRight(Field field){
-		boolean possible=true;
-		if (this.poscol+1==12){
-			for (int i=0; i< this.block.length;i++){
-				if (this.block[i][this.block[0].length-1]){
-					possible=false;
-				}
-			}
-		} else if (this.poscol+1==13){
-			for (int i=0; i< this.block.length; i++){
-				for (int j=this.block.length-1; j>=this.block.length-2;j--){
-					if(this.block[i][j]){
-						possible=false;
-					}
-				}
-			}
-		}
-
-		if(this.poscol+block[0].length+1 >= 12){
-			possible = false;
-		}
-
-
-		for (int i=this.posrow; i<this.posrow+this.block.length; i++){
-			for (int j=this.poscol; j<this.poscol+this.block[0].length;j++){
-				if (!field.isCellEmpty(i, j)){
-					possible=false;
-				}
-			}
-		}
-		if (possible){
-			this.poscol=this.poscol+1;
 			System.out.println("moving right");
 		}
 	}
 
+	/*
+	* bewegt das Array um 1 Position nach links
+	*/
+	//////Patricks Version
+	public void moveLeft(Field field){
+
+		boolean possible = true;
+
+		if (poscol-1 <= 1){
+			possible=false;
+		}
+
+		if(possible) {
+			for(int i = 0; i < block.length; i++){
+				for(int j = 0; j < block[0].length; j++){
+					if(block[i][j]){
+						if(! field.isCellEmpty(posrow+i, poscol+j-1)){
+							possible = false;
+						}
+					}
+				}
+			}
+		}
+		if (possible){
+			this.poscol=this.poscol-1;
+			System.out.println("moving left");
+		}
+	}
+
+	
 	/*
 	* rotiert array nach rechts
 	*/
