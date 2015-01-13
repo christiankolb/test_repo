@@ -1,9 +1,8 @@
-/**
+/** 
  * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
- * Tetris @version 1.0
- * 
- * 
- * @linkPlain Cell.Java 
+ * UE Software Engineering WS 2014
+ * Tetris 
+ * @version 1.0
  */
 
 public class Field {

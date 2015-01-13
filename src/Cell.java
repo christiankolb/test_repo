@@ -1,7 +1,8 @@
 /**
- * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+* @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  * UE Software Engineering WS 2014
- * Tetris @version 1.0
+ * Tetris 
+ * @version 1.0
  */
 public class Cell {
 	/**

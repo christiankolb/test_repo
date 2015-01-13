@@ -1,5 +1,8 @@
-/**
- * Created by patrick on 22.12.14.
+/** 
+ * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * UE Software Engineering WS 2014
+ * Tetris 
+ * @version 1.0
  */
 public abstract class Block {
 

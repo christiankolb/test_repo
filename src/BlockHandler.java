@@ -1,20 +1,21 @@
 import java.util.Random;
 
 /**
- * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+* @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  * UE Software Engineering WS 2014
- * Tetris @version 1.0
+ * Tetris 
+ * @version 1.0
+ *
+ *  Die Klasse BlockHandler ist die Klasse, welche zentral das Spiel steuert.
+ *  In ihr wird durch Zufalls-Zahlgenerator bestimmt, welche Steine produziert werden und welche Aktion des Steins ausgeführt wird, siehe: {@link randomNumber} {@link spawnNextBlock} {@link moveBlock}
+ *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link spawnNextBlock}
+ *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link moveBlock} {@link #standardMoveDown} {@link rotateBlock} {@link Block}
+ *	Nicht zuletzt setzt die Spielsteine auf das SPielfeld, siehe {@link #finalizeBlock}
  */
 
 public class BlockHandler {
 
 	 /**
-     *  Die Klasse BlockHandler ist die Klasse, welche zentral das Spiel steuert.
-     *  In ihr wird durch Zufalls-Zahlgenerator bestimmt, welche Steine produziert werden und welche Aktion des Steins ausgeführt wird, siehe: {@link randomNumber} {@link spawnNextBlock} {@link moveBlock}
-     *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link spawnNextBlock}
-     *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link moveBlock} {@link #standardMoveDown} {@link rotateBlock} {@link Block}
-     *	Nicht zuletzt setzt die Spielsteine auf das SPielfeld, siehe {@link #finalizeBlock}
-     *
      * @param rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@like #randomNumber}
      * @param randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@like #randomNumber}
      */
@@ -191,7 +192,7 @@ public class BlockHandler {
     } // end isGameOver
 
     /**
-    * erzeugt zufällige Zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
+    * erzeugt zuf&auml;llige Zahl für neue bl&ouml;cke (0-6) oder rotation (-4-4) oder bewegung (0-3)
     * @return gibt eine Zufallszahl zur&uuml;ck, welche bestimmt, welche Aktion durchgef&uuml;hrt  oder welcher Spielstein als nächstes gesetzt wird, siehe: {@link #moveBlock} und {@link #spawnNextBlock()}
     */ 
     private int randomNumber(int max, int min){
@@ -200,8 +201,8 @@ public class BlockHandler {
     }
 
     /**
-     *nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
-     *F&uuml;hrt am Ende zu der Methode, die &uuml;berpr&uumlft, ob Reihen im Spielfeld voll sind oder nicht, siehe {@link Field#deleteFullRows()};
+     * nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen l&ouml;schen
+     * F&uuml;hrt am Ende zu der Methode, die &uuml;berpr&uumlft, ob Reihen im Spielfeld voll sind oder nicht, siehe {@link Field#deleteFullRows()};
     */
     private void finalizeBlock(){
     	if(current.finished){
