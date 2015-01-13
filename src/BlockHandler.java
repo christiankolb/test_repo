@@ -3,14 +3,14 @@ import java.util.Random;
 /**
 * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  * UE Software Engineering WS 2014
- * Tetris 
- * @version 1.0
- *
+ * Tetris @version 1.0
+ */
+/**
  *  Die Klasse BlockHandler ist die Klasse, welche zentral das Spiel steuert.
- *  In ihr wird durch Zufalls-Zahlgenerator bestimmt, welche Steine produziert werden und welche Aktion des Steins ausgeführt wird, siehe: {@link randomNumber} {@link spawnNextBlock} {@link moveBlock}
- *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link spawnNextBlock}
- *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link moveBlock} {@link #standardMoveDown} {@link rotateBlock} {@link Block}
- *	Nicht zuletzt setzt die Spielsteine auf das SPielfeld, siehe {@link #finalizeBlock}
+ *  In ihr wird durch Zufalls-Zahlgenerator bestimmt, welche Steine produziert werden und welche Aktion des Steins ausgef&uuml;hrt wird, siehe: {@link #randomNumber} {@link #spawnNextBlock} {@link #moveBlock}
+ *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link #spawnNextBlock}
+ *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link #moveBlock} {@link #standardMoveDown} {@link #rotateBlock} {@link #Block}
+ *	Nicht zuletzt setzt die Spielsteine auf das Spielfeld, siehe {@link #finalizeBlock}
  */
 
 public class BlockHandler {
@@ -44,7 +44,7 @@ public class BlockHandler {
     private Block current;
    
     /**
-	  * @param boolean = Wahrheitswert zur überprüfung, ob stein abgesetzt ist, siehe {@link #finalizeBlock} und {@link #getCurrentFinished}
+	  * @param boolean = Wahrheitswert zur überprüfung, ob Stein abgesetzt ist, siehe {@link #finalizeBlock} und {@link #getCurrentFinished}
      */
     
     private boolean currentFinished; 
@@ -71,7 +71,7 @@ public class BlockHandler {
     }
 
     /**
-     * Macht eine Bewegung, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
+     * Macht eine Bewegung des Spielsteins, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
      * Ruft am Ende die Methode zum endg&uuml;ltigen Platzierung des Steines auf, siehe {@link #finalizeBlock}
      */
     public void moveBlock(){
@@ -122,7 +122,7 @@ public class BlockHandler {
     }
 
     /**
-    * Macht eine Drehung, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
+    * Macht eine Drehung des Spielsteins, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
     */
     public void rotateBlock(){
         int rotation = randomNumber(4,-4);
@@ -154,6 +154,10 @@ public class BlockHandler {
         finalizeBlock();
     }
 
+    /**
+     * Legt den Gradanzahl der Spielsteindrehung anhand einer Zufallszahl fest, siehe {@link #randomNumber} und {@link #rotateBlock}
+     */
+    
     private int getDegree(int x){
         int y = 0;
         switch(x){
@@ -219,6 +223,11 @@ public class BlockHandler {
     	}//end if
     }
 
+    /**
+     * Diese Methode gibt den Wahrheitswert zur&uuml;ck, der anzeigt ob er aktuelle Spielstein abgesetzt wurde
+     * @return Gibt die Variable currentFinished zur&uuml;ck, die anzeigt, ob der eraktuelle Spielstein platziert worden ist
+     */
+    
     public boolean getCurrentFinished(){
         return currentFinished;
     }

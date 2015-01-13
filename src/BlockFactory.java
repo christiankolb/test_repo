@@ -3,8 +3,11 @@
  * UE Software Engineering WS 2014
  * Tetris 
  * @version 1.0
+ */
+
+ /** 
  * Die Klasse Blockfactory ist die Klasse, welche zentral die Spielsteine erzeugt. 
- *  Sie wird aufgerufen in der Methode spawnNextBlock in der Klasse BlockHandler, siehe: {@link BlockHandler#spawnNextBlock} bzw. {@link Block}
+ * Sie wird aufgerufen in der Methode spawnNextBlock in der Klasse BlockHandler, siehe: {@link BlockHandler#spawnNextBlock} bzw. {@link Block}
 */ 
 
 
