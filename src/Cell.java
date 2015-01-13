@@ -9,16 +9,15 @@ public class Cell {
 	 * Ein Cell-Objekt besteht aus einem Booleanwert und die Form des Spielsteins, von dem die Spielfeld-Zelle besetzt ist
 	 * (Falls Sie von dem Teil eines Spielsteins besetzt ist). Das Spielfeld besetht also sozusagen aus einem Array von Wahrheitswerten
 	 * @see Field
-	 * @param isEmpty = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt 
-	 * @param s = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt, siehe in {@Shape}, wird benötigt zum Ausgeben, welcher Stein sich auf dem Spielfeld befindet, siehe in {@Field#printField()} 
+	 * @param s = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt, siehe in {@link Shape}, wird benötigt zum Ausgeben, welcher Stein sich auf dem Spielfeld befindet, siehe in {@link Field#printField()} 
 	 * @see Shape
 	 * @see Field#printField() 
 	 */
     private Shape s;  
+    
     /**
 	 * @param isEmpty = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt 
 	 */
-    
     private boolean isEmpty;
 
 
@@ -54,7 +53,7 @@ public class Cell {
     }
 
     /** 
-   	 * @return gibt zurück OB die Zelle von dem Teil eines Spielsteines besetzt ist 
+   	 * @return gibt zur&uuml;ck OB die Zelle von dem Teil eines Spielsteines besetzt ist 
    	 */
     
     public boolean getIsEmpty(){
