@@ -1,5 +1,5 @@
 /**
- * Created by patrick on 18.12.14.
+ * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
  */
 public class GameApp {
 
