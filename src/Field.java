@@ -95,4 +95,4 @@ public class Field {
 		System.out.print("\n");
 
 	} // end printField
-}
+} // end class Field

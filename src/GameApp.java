@@ -4,11 +4,17 @@
  * 
  */
 
-public class GameApp {
+public class GameApp{
 
 /**
  * Dies ist die Testklasse des Tetrisspiels mit der main-Methode
  * 
+ * Sie erzeugt einen Blockhandler und das Spielfeld, welches dem Blockhandler &uuml;bergeben wird
+ * Siehe: {@link BlockHandler} und {@link Field}
+ * Danach werden in einer while-Schleife ( while(!handler.isGameOver() , siehe {@link BlockHandler#isGameOver) folgende Methoden in der Reihenfolge ausgef&uuml;hrt:
+ * 1. {@link BlockHandler#isGameOver}, 2. Drei mal die Methode {@link BlockHandler#standardMoveDown}, 3. Seitenbewegung ( {@link BlockHandler#moveBlock} ), 4. Rotation ( {@link BlockHandler#rotateBlock} )
+ * Danach werden noch einige Standardbewegungen nach untern ausgef&uuml;hrt ( while(!handler.getCurrentFinished()) {handler.standardMoveDown();} ), 
+ * bis der Stein am Boden oder auf einen andern Boden aufprallt, danach wird die ursprüngliche Schleife von vorn begonnen:  
  */
 	
 	
@@ -34,5 +40,5 @@ public class GameApp {
 		}
 		System.out.println("*** GAMEOVER ***");
 		field.printField();
-	}
-}
+	} // end main method
+} // end class GameApp
