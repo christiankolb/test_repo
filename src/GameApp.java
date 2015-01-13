@@ -1,5 +1,6 @@
 /**
  * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * 
  */
 public class GameApp {
 
