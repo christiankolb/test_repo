@@ -1,16 +1,52 @@
 import java.util.Random;
 
 /**
- * Created by patrick on 18.12.14.
+ * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * UE Software Engineering WS 2014
+ * Tetris @version 1.0
  */
+
 public class BlockHandler {
 
+	 /**
+     *  Die Klasse Blockhandler ist die Klasse, welche zentral das Spiel steuert.
+     *  In ihr wird durch Zufalls-Zahlgenerator bestimmt, welche Steine produziert werden und welche Aktion des Steins ausgeführt wird, siehe: {@link randomNumber} {@link spawnNextBlock} {@link moveBlock}
+     *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link spawnNextBlock}
+     *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link moveBlock} {@link #standardMoveDown} {@link rotateBlock} {@link Block}
+     *	Nicht zuletzt setzt die Spielsteine auf das SPielfeld, siehe {@link #finalizeBlock}
+     *
+     * @param rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@like #randomNumber}
+     * @param randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@like #randomNumber}
+     */
+	
+	
     private Random rand;
     private int randomNum;
+    
+
+	 /**
+	  * @param field Initialisiert das Spielfeld, siehe {@link Field} 
+      */
+    
     private Field field;
+    
+    /**
+	  * @param BlockFactory =  Initialisiert die BlockFactory, siehe {@link #spawnNextBlock} und {@link BlockFactory}
+     */
+    
     private BlockFactory factory;
+    
+    /**
+	  * @param current = Initialisiert das Spielfeld, siehe {@link #spawnNextBlock} und {@link Block} 
+     */
+    
     private Block current;
-    private boolean currentFinished; // zur überprüfung, ob stein abgesetzt
+   
+    /**
+	  * @param boolean = Wahrheitswert zur überprüfung, ob stein abgesetzt ist, siehe {@link #finalizeBlock} und {@link #getCurrentFinished}
+     */
+    
+    private boolean currentFinished; 
 
 
     public BlockHandler(Field field){
@@ -19,6 +55,12 @@ public class BlockHandler {
         factory = new BlockFactory();
     }
 
+    /**
+     * Hier wird der n&auml;chste Spielstein erzeugt. Welche Spielsteinart, das wird die anhand einer Zufallszahl entschieden, siehe {@link #randomNumber}
+     * Nach dem Erzeugen der Zufallszahl, wir diese an die Blockfactory &uuml;bergeben, um den entsprechenden Stein zu erzeugen, siehe {@link BlockFactory#createNewBlock()}
+     * Danach wir die anfaengliche Position des Steins noch in der Methde festgelegt, in dem setPosrow und setPoscol des erzeugten Spielsteins aufgerufen werden, siehe {@link Block#setPosrow} und {@link Block#setPoscol}
+     */
+    
     public void spawnNextBlock(){
         currentFinished = false;
         current = factory.createNewBlock(randomNumber(6,0));
@@ -27,7 +69,10 @@ public class BlockHandler {
         System.out.println("\nNeuer Block: " + current.getShape() + ", an der Position  " + current.getPoscol() + "/" + current.getPosrow());
     }
 
-    //random Bewegung des aktuellen Steines
+    /**
+     * Macht eine Bewegung, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
+     * Ruft am Ende die Methode zum endg&uuml;ltigen Platzierung des Steines auf, siehe {@link #finalizeBlock}
+     */
     public void moveBlock(){
         int moveDir = randomNumber(2,0);
         int moveDis = randomNumber(5,0);
@@ -65,6 +110,9 @@ public class BlockHandler {
         finalizeBlock();
     }
 
+    /**
+     * F&uuml;hrt die regelm&auml;&szlig;ige (Standard-)Bewegung des Spielsteins nach unten aus, die immer erfolgt bis der Stein gesetzt ist.
+     */
     public void standardMoveDown(){
         if(!current.moveDown(field)){
             System.out.println("Bewegung nach unten nicht möglich");
@@ -72,7 +120,9 @@ public class BlockHandler {
         finalizeBlock();
     }
 
-    // random drehen von aktuellem Stein
+    /**
+    * Macht eine Drehung, die anhand einer Zufallszahl entschieden wird {@link #randomNumber}
+    */
     public void rotateBlock(){
         int rotation = randomNumber(4,-4);
         boolean rotated;
@@ -125,7 +175,10 @@ public class BlockHandler {
         return y;
     }
 
-    //nach jeder aktion checken ob gameover
+    /**
+     * Mittels dieser Methode wird nach jeder Aktion &uuml;berpr&uuml;ft ob gameover eingetreten ist
+     * @return gibt zur&uuml,ck ob das gameover eingetreten ist
+     */
     public boolean isGameOver(){
     	for (int i=0; i<4; i++){
     		for (int j=0; j<14; j++){
@@ -137,14 +190,19 @@ public class BlockHandler {
     	return false;
     } // end isGameOver
 
-    // erzeugt zufällige zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
+    /**
+    * erzeugt zufällige Zahl für neue blöcke (0-6) oder rotation (-4-4) oder bewegung (0-3)
+    * @return gibt eine Zufallszahl zur&uuml;ck, welche bestimmt, welche Aktion durchgef&uuml;hrt  oder welcher Spielstein als nächstes gesetzt wird, siehe: {@link #moveBlock} und {@link #spawnNextBlock()}
+    */ 
     private int randomNumber(int max, int min){
         randomNum = rand.nextInt((max-min) + 1) + min;
         return randomNum;
     }
 
-
-    // nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
+    /**
+     *nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen löschen
+     *F&uuml;hrt am Ende zu der Methode, die &uuml;berpr&uumlft, ob Reihen im Spielfeld voll sind oder nicht, siehe {@link Field#deleteFullRows()};
+    */
     private void finalizeBlock(){
     	if(current.finished){
             for (int i=0;i<current.block.length;i++){
