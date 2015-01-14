@@ -1,5 +1,5 @@
 /** 
- * @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * @author: Team 2 (Pepic, Kienbauer, Kolb)
  * UE Software Engineering WS 2014
  * Tetris 
  * @version 1.0
