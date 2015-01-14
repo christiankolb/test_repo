@@ -1,6 +1,13 @@
 /**
- * Created by patrick on 22.12.14.
+* @author: Team 2 (Kienbauer, Kienbauer, Kolb)
+ * UE Software Engineering WS 2014
+ * Tetris @version 1.0
  */
+
+/**
+ * Diese Klasse ist eine der Spielsteinvarianten, welche festgelegt ist in der Shape-Enum, siehe  {@link Shape}
+ */
+
 public class Block_O extends Block {
 
 	public Block_O(Shape s) {
