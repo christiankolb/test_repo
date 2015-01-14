@@ -34,8 +34,7 @@ public class Cell {
     /** 
    	 * Legt die Form des Spielsteines fest (sofern die Zelle von dem Teil eines Spielsteins besetzt wird)
    	 * 
-   	 * {@link Block#moveLeft(Field)}
-   	 * {@linkPlain Block#moveRight(Field)}
+ 
    	 */
     
     public void setShape(Shape s){

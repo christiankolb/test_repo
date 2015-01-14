@@ -16,13 +16,13 @@ import java.util.Random;
 public class BlockHandler {
 
 	 /**
-     * rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@like #randomNumber}
+     * rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@link #randomNumber}
      */
 	
     private Random rand;
     
     /**
-     * randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@like #randomNumber}
+     * randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@link #randomNumber}
      */
     
     private int randomNum;
