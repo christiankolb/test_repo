@@ -16,39 +16,46 @@ import java.util.Random;
 public class BlockHandler {
 
 	 /**
-     * @param rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@like #randomNumber}
-     * @param randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@like #randomNumber}
+     * rand = Zufallswert, der anhand der java.util.Random-Bibliothek erstellt wird, siehe {@like #randomNumber}
      */
 	
-	
     private Random rand;
+    
+    /**
+     * randomNum = Integer-Variable, in der Random rand gespeichert wird, siehe {@like #randomNumber}
+     */
+    
     private int randomNum;
     
 
 	 /**
-	  * @param field Initialisiert das Spielfeld, siehe {@link Field} 
+	  * field Initialisiert das Spielfeld, siehe {@link Field} 
       */
     
     private Field field;
     
     /**
-	  * @param BlockFactory =  Initialisiert die BlockFactory, siehe {@link #spawnNextBlock} und {@link BlockFactory}
+	  *  BlockFactory =  Initialisiert die BlockFactory, siehe {@link #spawnNextBlock} und {@link BlockFactory}
      */
     
     private BlockFactory factory;
     
     /**
-	  * @param current = Initialisiert das Spielfeld, siehe {@link #spawnNextBlock} und {@link Block} 
+	  * Block current = Initialisiert das Spielfeld, siehe {@link #spawnNextBlock} und {@link Block} 
      */
     
     private Block current;
    
     /**
-	  * @param boolean = Wahrheitswert zur überprüfung, ob Stein abgesetzt ist, siehe {@link #finalizeBlock} und {@link #getCurrentFinished}
+	  * boolean currentFinished = Wahrheitswert zur überprüfung, ob Stein abgesetzt ist, siehe {@link #finalizeBlock} und {@link #getCurrentFinished}
      */
     
     private boolean currentFinished; 
 
+    /**
+     * Konstruktor der BlockHandler-Klasse
+     * @param field Das Spielfeld, welche von der Testklasse ( {@link GameApp} )  uebergeben wurde
+     */
 
     public BlockHandler(Field field){
         rand = new Random();
@@ -155,7 +162,14 @@ public class BlockHandler {
     }
 
     /**
-     * Legt den Gradanzahl der Spielsteindrehung anhand einer Zufallszahl fest, siehe {@link #randomNumber} und {@link #rotateBlock}
+     * 
+     * @return 
+     */
+    
+    /**
+     * Gibt die Gradanzahl der Spielsteindrehung anhand einer Zufallszahl aus, siehe {@link #randomNumber} und {@link #rotateBlock}
+     * @param x Der Wert, der mit der Zufallszahl ermittelt wurde in {@link #rotateBlock}
+     * @return Gibt die Gradanzahl zur&uuml;ck, welche dazu dient, auf der Kommandozeile (bzw. Shell oder Terminal) den/die AnwenderIn um die Gradanzahl zu informieren, um die versucht wird, den Spielstein zu drehen
      */
     
     private int getDegree(int x){
@@ -196,9 +210,15 @@ public class BlockHandler {
     } // end isGameOver
 
     /**
-    * erzeugt zuf&auml;llige Zahl für neue bl&ouml;cke (0-6) oder rotation (-4-4) oder bewegung (0-3)
-    * @return gibt eine Zufallszahl zur&uuml;ck, welche bestimmt, welche Aktion durchgef&uuml;hrt  oder welcher Spielstein als nächstes gesetzt wird, siehe: {@link #moveBlock} und {@link #spawnNextBlock()}
+   
     */ 
+    
+    /**
+     * erzeugt eine zuf&auml;llige Zahl für neue Bl&ouml;cke (0-6) oder Rotation (-4-4) oder Bewegung (0-3)
+     * @param max Legt den h&ouml;chsten Wert fest, den die Zufallszahl annehmen darf
+     * @param min Legt den niedrigsten Wert fest, den die Zufallszahl annehmen darf
+     * @return gibt eine Zufallszahl zur&uuml;ck, welche bestimmt, welche Aktion durchgef&uuml;hrt  oder welcher Spielstein als nächstes gesetzt wird, siehe: {@link #moveBlock} und {@link #spawnNextBlock()}
+     */
     private int randomNumber(int max, int min){
         randomNum = rand.nextInt((max-min) + 1) + min;
         return randomNum;

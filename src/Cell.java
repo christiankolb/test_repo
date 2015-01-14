@@ -12,18 +12,21 @@
 */
 public class Cell {
 	/**
-	 * @param s = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt, siehe in {@link Shape}, wird benötigt zum Ausgeben, welcher Stein sich auf dem Spielfeld befindet, siehe in {@link Field#printField()} 
+	 * s = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt, siehe in {@link Shape}, wird benötigt zum Ausgeben, welcher Stein sich auf dem Spielfeld befindet, siehe in {@link Field#printField()} 
 	 * @see Shape
 	 * @see Field#printField() 
 	 */
     private Shape s;  
     
     /**
-	 * @param isEmpty = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt 
+	 * isEmpty = speichert die Form des Spielsteines, falls ein Teil eines Spielsteines die Zelle besetzt 
 	 */
     private boolean isEmpty;
 
-
+    /**
+     * Konstruktor der Cell-Klasse. isEmpty wird standardm&auml;&szlig; wird die Feld-Zelle als unbesetzt initialisiert
+     */
+    
     public Cell(){
         isEmpty = true;
     }
