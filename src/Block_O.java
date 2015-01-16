@@ -21,13 +21,5 @@ public class Block_O extends Block {
 		block[1][1] = true;
 	}
 
-	@Override
-	public boolean rotateRight(Field field) {
-		return true;
-	}
 
-	@Override
-	public boolean rotateLeft(Field field) {
-		return true;
-	}
 }

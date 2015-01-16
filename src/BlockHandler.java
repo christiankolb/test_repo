@@ -51,16 +51,31 @@ public class BlockHandler {
      */
     
     private boolean currentFinished; 
-
+    
+    /**
+	  * Moves moves = seuert die Bewegungen an
+    */
+    private Moves moves;
+    
+    /**
+     * *Printing printing = ist f�r das Drucken auf der Kommandozeile verantwortlich.
+     */
+    private Printing printing;
+    
+   
     /**
      * Konstruktor der BlockHandler-Klasse
      * @param field Das Spielfeld, welche von der Testklasse ( {@link GameApp} )  uebergeben wurde
      */
+    
+
 
     public BlockHandler(Field field){
         rand = new Random();
         this.field = field;
         factory = new BlockFactory();
+        moves = new Moves();
+        printing = new Printing();
     }
 
     /**
@@ -74,7 +89,7 @@ public class BlockHandler {
         current = factory.createNewBlock(randomNumber(6,0));
         current.setPosrow(0);
         current.setPoscol(4 + (current.getBlock()[0].length)/2);
-        System.out.println("\nNeuer Block: " + current.getShape() + ", an der Position  " + current.getPoscol() + "/" + current.getPosrow());
+        printing.printSpawnNextBlock(current);
     }
 
     /**
@@ -88,30 +103,34 @@ public class BlockHandler {
         switch(moveDir){
             case 0:
                  //Bewegung nach links
-                System.out.println("Versuche Bewegung um " + moveDis + " nach links");
+               printing.printTryMove(moveDis,"links");
                 for(int i = 0; i < moveDis; i++) {
-                    if(!current.moveLeft(field)){
-                        System.out.println("-- Bewegung um 1 nach links nicht möglich");
+                    if(!moves.moveLeft(field,current)){
+                        printing.printMovePossible(moveDis, "links",false);
                     }else{
-                       System.out.println("-- Bewegung um 1 nach links ausgeführt");
+                    	 printing.printMovePossible(moveDis,"links", true);
                     }
                 }
                 break;
             case 1:
                  //Bewegung nach rechts
-                current.moveRight(field);
-                System.out.println("Versuche Bewegung um " + moveDis + " nach rechts");
+               // moves.moveRight(field,current);
+                printing.printTryMove(moveDis, "rechts");
                 for(int i = 0; i < moveDis; i++) {
-                    if(!current.moveRight(field)){
-                        System.out.println("-- Bewegung um 1 nach rechts nicht möglich");
+                    if(!moves.moveRight(field,current)){
+                        printing.printMovePossible(moveDis,"rechts",false);
                     }else{
-                        System.out.println("-- Bewegung um 1 nach rechts ausgeführt");
+                    	printing.printMovePossible(moveDis,"rechts",true);
                     }
                 }
                 break;
             case 2:
                 //Bewegung nach unten
-                current.moveDown(field);
+            	if(!moves.moveDown(field,current)){
+                   printing.printMovePossible(1,"unten", false);
+                } else {
+                	printing.printMovePossible(1,"unten",true);
+                }
             default:
                 break;
         }
@@ -122,8 +141,8 @@ public class BlockHandler {
      * F&uuml;hrt die regelm&auml;&szlig;ige (Standard-)Bewegung des Spielsteins nach unten aus, die immer erfolgt bis der Stein gesetzt ist.
      */
     public void standardMoveDown(){
-        if(!current.moveDown(field)){
-            System.out.println("Bewegung nach unten nicht möglich");
+        if(!moves.moveDown(field,current)){
+        	printing.printMovePossible(1,"unten", false);
         }
         finalizeBlock();
     }
@@ -137,24 +156,24 @@ public class BlockHandler {
 
         // drehung nach links
         if(rotation >= -4 && rotation < 0){
-            System.out.println("Versuche Rotation um " + getDegree(rotation) + "° gegen den UZS");
+            printing.printTryRotation(getDegree(rotation),"gegen den");
             for(int i = 0; i < rotation * -1; i++){
-                if(!current.rotateLeft(field)){
-                    System.out.println("-- Rotation nach links nicht möglich");
+                if(!moves.rotateLeft(field,current)){
+                    printing.printRotationPossible("links", false);
                 }else{
-                    System.out.println("-- Rotation nach links ausgeführt");
+                	printing.printRotationPossible("links", true);
                 }
             }
         }
 
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
-            System.out.println("Versuche Rotation um " + getDegree(rotation) + "° im UZS");
+        	printing.printTryRotation(getDegree(rotation),"im");
             for(int i = 0; i < rotation; i++){
-                if(!current.rotateRight(field)){
-                    System.out.println("-- Rotation nach rechts nicht möglich");
+                if(!moves.rotateRight(field,current)){
+                	printing.printRotationPossible("rechts", false);
                 }else{
-                    System.out.println("-- Rotation nach rechts ausgeführt");
+                	printing.printRotationPossible("rechts", true);
                 }
             }
         }
@@ -239,7 +258,10 @@ public class BlockHandler {
             	}
             }
             currentFinished = true;
-            field.deleteFullRows();
+            int anzahl;
+        anzahl=    field.deleteFullRows();
+        if (anzahl!=0) printing.printDeleteFullRows(anzahl);
+        
     	}//end if
     }
 

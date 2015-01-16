@@ -43,6 +43,26 @@ public class Field {
 			}
 		}
 	} // end field
+	
+	
+	/** 
+	 * Methode die Variable TOTAL_HEIGHT zurückgibt
+	 * @return TOTAL_HEIGHT
+	 */
+	public int getTotalHeight(){
+		return this.TOTAL_HEIGHT;
+	}
+	
+	
+	/** 
+	 * Methode die Variable TOTAL_WIDTH zurückgibt
+	 * @return TOTAL_WIDTH
+	 */
+	public int getTotalWidth(){
+		return this.TOTAL_WIDTH;
+	}
+	
+	
 
 	/**
 	 * Methode, welche eine einzele Zelle abfragt, ob sie leer ist
@@ -59,9 +79,10 @@ public class Field {
 	 * Methode, welche volle Zeilen loescht und die restlichen quasi "nach unten" r&uuml;ckt
 	 */
 	
-	public void deleteFullRows() {
+	public int deleteFullRows() {
 		boolean isFull;
 		boolean skip;
+		int anzahl=0;
 		for (int i = 4; i < TOTAL_HEIGHT - 2; i++) {
 			isFull = false;
 			skip = false;
@@ -73,6 +94,7 @@ public class Field {
 				}
 			}
 			if (isFull) {
+				anzahl++;
 				Cell[] rowprev = new Cell[TOTAL_WIDTH];
 				Cell[] rownext = new Cell[TOTAL_WIDTH];
 				for (int k = 4; k < i; k++) {
@@ -82,9 +104,10 @@ public class Field {
 						field[k][l]= rowprev[l];
 					}
 				}
-				System.out.println("VollstÃ¤ndige Reihe aufgelÃ¶st.");
+				
 			}
 		}
+		return anzahl;
 	}
 
 	/**
@@ -97,48 +120,4 @@ public class Field {
 		return field;
 	}
 
-	/**
-	 * Methode, welche das Spielfeld in der Kommandozeile (bzw. Shell bzw. Terminal) ausgibt
-	 * Das Spielfeld ist an sich ein Array bestehend aus Cell-Objekten, ferner ein Array bestehend aus Wahrheitswerten,
-	 * dennoch geben wir das Spielfeld nicht als Boolean-Werte aus, sondern als Character
-	 * Dabei wird je nachdem, welchen Wert der Stein aus der {@link Shape}-Enum hat, werden
-	 * andere, zum Spielstein passende, Zeichen ausgegeben.
-	 */
-	
-	public void printField() {
-		System.out.print("\n");
-		for (int i = 4; i < TOTAL_HEIGHT - 2; i++){
-			System.out.print("\n");
-			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
-				if (field[i][j].getIsEmpty()) {
-					System.out.print('.');
-				} else {
-					if(field[i][j].getShape() == Shape.I){
-						System.out.print("I");
-					}
-					if(field[i][j].getShape() == Shape.J){
-						System.out.print("J");
-					}
-					if(field[i][j].getShape() == Shape.L){
-						System.out.print("L");
-					}
-					if(field[i][j].getShape() == Shape.O){
-						System.out.print("O");
-					}
-					if(field[i][j].getShape() == Shape.S){
-						System.out.print("S");
-					}
-					if(field[i][j].getShape() == Shape.T){
-						System.out.print("T");
-					}
-					if(field[i][j].getShape() == Shape.Z){
-						System.out.print("Z");
-					}
-				}
-
-			}
-		}
-		System.out.print("\n");
-
-	} // end printField
 } // end class Field
