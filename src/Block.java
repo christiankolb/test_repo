@@ -13,6 +13,7 @@ public abstract class Block {
 	protected Shape shape;
 	public boolean finished;
 
+	public Block(){};
 
 	public Block(Shape s)
 	{
