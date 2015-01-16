@@ -70,12 +70,12 @@ public class BlockHandler {
     
 
 
-    public BlockHandler(Field field){
+    public BlockHandler(Field field, Printing printing){
         rand = new Random();
         this.field = field;
         factory = new BlockFactory();
         moves = new Moves();
-        printing = new Printing();
+        this.printing = printing;
     }
 
     /**
@@ -158,23 +158,22 @@ public class BlockHandler {
         if(rotation >= -4 && rotation < 0){
             printing.printTryRotation(getDegree(rotation),"gegen den");
             for(int i = 0; i < rotation * -1; i++){
-                if(!moves.rotateLeft(field,current)){
-                    printing.printRotationPossible("links", false);
-                }else{
-                	printing.printRotationPossible("links", true);
-                }
+            	int a=moves.rotateLeft(field,current);
+            	printing.printRotationPossible("links", a);
             }
+               
+                 
+            
         }
 
         // drehung nach rechts
         if(rotation <= 4 && rotation > 0){
         	printing.printTryRotation(getDegree(rotation),"im");
             for(int i = 0; i < rotation; i++){
-                if(!moves.rotateRight(field,current)){
-                	printing.printRotationPossible("rechts", false);
-                }else{
-                	printing.printRotationPossible("rechts", true);
-                }
+            	int a=moves.rotateRight(field,current);
+                
+                	printing.printRotationPossible("rechts", a);
+
             }
         }
         finalizeBlock();
@@ -272,6 +271,16 @@ public class BlockHandler {
     
     public boolean getCurrentFinished(){
         return currentFinished;
+    }
+    
+    
+    /**
+     * Diese Methode druckt das Spielfeld aus
+     */
+   
+    
+    public void print(){
+    	this.printing.printField(this.field);
     }
 
 } // end class BlockHandler

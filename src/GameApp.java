@@ -21,8 +21,9 @@ public class GameApp{
 	public static void main(String[] args) {
 
 		Field field = new Field();
-		BlockHandler handler = new BlockHandler(field);
 		Printing printing = new Printing();
+		BlockHandler handler = new BlockHandler(field, printing);
+		
 
 		while(!handler.isGameOver()){
 			handler.spawnNextBlock();
@@ -40,7 +41,7 @@ public class GameApp{
 			}
 		}
 		System.out.println("*** GAMEOVER ***");
-		printing.printField(field);
+		handler.print();
 	
 	} // end main method
 } // end class GameApp

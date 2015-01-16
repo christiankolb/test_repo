@@ -102,12 +102,14 @@ public class Printing {
 		 * @param possible: war die Rotation m�glich
 		 */
            
-		public void printRotationPossible(String direction, boolean possible){
-			if(!possible){
+		public void printRotationPossible(String direction, int possible){
+			
+			if(possible==2){
 			System.out.println("-- Rotation nach "+direction+" nicht möglich");
-			}else {
+			}else if (possible<=1) {
 				System.out.println("-- Rotation nach "+direction+" möglich");
-			}
+				if (possible==0) System.out.println("Der Spielstin wurde dabei wieder in das Feld gezogen.");
+			} 
 		}
 		
 		/**

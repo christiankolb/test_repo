@@ -1,10 +1,6 @@
 
 public class Moves {
-Printing printing;
 
-public Moves(){
-	printing= new Printing();
-}
 	
 //////Patricks Version
 	public boolean moveDown(Field field, Block current){
@@ -112,9 +108,9 @@ public Moves(){
 	* @param field = Spielfeld sehe {@link Field}
 	* @return Gibt zurueck ob die Drehung auch durchgefuehrt werden konnte
 	*/
-	public boolean rotateRight(Field field, Block current){
+	public int rotateRight(Field field, Block current){
 		if(current.getShape().equals("O")){
-			return true;
+			return 1;
 		} else {
 		boolean[][] rotated = new boolean[current.getBlock()[0].length][current.getBlock().length];
 		for(int i = 0; i < current.getBlock().length; i++){
@@ -131,9 +127,9 @@ public Moves(){
 	* @param field = Spielfeld sehe {@link Field}
 	* @return Gibt zurueck ob die Drehung auch durchgefuehrt werden konnte
 	*/
-	public boolean rotateLeft(Field field, Block current){
+	public int rotateLeft(Field field, Block current){
 		if(current.getShape().equals("O")){
-			return true;
+			return 1;
 		} else{
 		boolean[][] rotated = new boolean[current.getBlock()[0].length][current.getBlock().length];
 		for(int i = 0; i < current.getBlock().length; i++){
@@ -154,7 +150,7 @@ public Moves(){
 	 * @return Gibt einen Booleanwert zurueck, der anzeigt ob er der rotierte Stein auch "Platz" hat im Spielfeld, also ob die Rotation ueberhaupt moeglich ist
 	 */
 	
-	public boolean isRotationPossible(boolean[][] rotated,Field field, Block current) {
+	public int isRotationPossible(boolean[][] rotated,Field field, Block current) {
 		boolean possible = true;
 		boolean chpos = false;
 		int newposcol = current.getPoscol();
@@ -229,12 +225,12 @@ public Moves(){
 			current.setPosrow(newposrow);
 			//System.out.println("Rotation um 90° nach " + direction);
 			if(chpos){
-				printing.printRotationMove();
+				return 0;
 			}
-			return true;
+			return 1;
 		} else {
 			//System.out.println("Rotation nach "+ direction +" nicht möglich");
-			return false;
+			return 2;
 		}
 	}
 
