@@ -1,10 +1,24 @@
 /**
- * Created by patrick on 07.01.15.
+* @author: Team 2 (Pepic, Kienbauer, Kolb)
+ * UE Software Engineering WS 2014
+ * Tetris @version 1.0
  */
+
+ /** 
+ * Die Klasse Blockfactory ist die Klasse, welche zentral die Spielsteine erzeugt. 
+ * Sie wird aufgerufen in der Methode spawnNextBlock in der Klasse BlockHandler, siehe: {@link BlockHandler#spawnNextBlock} bzw. {@link Block}
+*/ 
+
+
 public class BlockFactory {
 
     public BlockFactory() {}
 
+    /**
+     * Diese Methode erzeugt einen neuen Spielstein
+     * @return Hier wird als R&uuml;ckgabewert ein neuer Spielstein zur&uuml;ckgegeben
+     */
+    
     public Block createNewBlock(int shape){
 
         switch(shape){
@@ -26,4 +40,4 @@ public class BlockFactory {
                 return null;
         }
     }
-}
+} // end class BlockFactory
