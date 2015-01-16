@@ -11,6 +11,8 @@ import java.util.Random;
  *  Sie erzeugt einerseits die Spielsteine, indem Sie auf die Blockfactory zugreift, wo die Steine erzeugt werden, siehe: {@link #spawnNextBlock}
  *  Sie steuert auch das Verhalten der Steine, sprich sie f&uuml;hrt die Methoden der Block-Klasse aus, siehe: {@link #moveBlock} {@link #standardMoveDown} {@link #rotateBlock} {@link #Block}
  *	Nicht zuletzt setzt die Spielsteine auf das Spielfeld, siehe {@link #finalizeBlock}
+ *	Außerdem: Die Methoden, die zum Anzeigen des Spielfelds und der Kommentare zum Spielverlauf in der Kommandozeile (bzw. Shell oder Terminal) dienen - siehe {@link Printing}, werden auschließlich in Methoden dieser Klasse aufgerufen.
+ *  
  */
 
 public class BlockHandler {
@@ -41,7 +43,7 @@ public class BlockHandler {
     private BlockFactory factory;
     
     /**
-	  * Block current = Initialisiert das Spielfeld, siehe {@link #spawnNextBlock} und {@link Block} 
+	  * Block current = Initialisiert einen Container für den Spielstein, welcher dann in der BlockFactory näher definiert wird (Definiert im Statement current = factory.createNewBlock(randomNumber(6,0)); in der Methode {@link #spawnNextBlock())
      */
     
     private Block current;
@@ -58,7 +60,7 @@ public class BlockHandler {
     private Moves moves;
     
     /**
-     * *Printing printing = ist f�r das Drucken auf der Kommandozeile verantwortlich.
+     * *Printing printing = ist fuer das Drucken auf der Kommandozeile verantwortlich.
      */
     private Printing printing;
     

@@ -1,4 +1,18 @@
 
+/**
+* @author: Team 2 (Pepic, Kienbauer, Kolb)
+ * UE Software Engineering WS 2014
+ * Tetris @version 1.0
+ */
+
+/**
+ * Dies ist die Klasse, welche alle Print-Methoden beinhaltet.
+ * Alles was im Rahmen unserer Tetris-Anwendung auf der Kommandozeile bzw. im Terminal bzw. in der Shell
+ * angezeigt wird (Kommentare zum Spielverlauf, das Spielfeld), wird von Methoden dieser Klassen ausgegeben.
+ * Alle Methoden der Printing-Klasse werden alleinig von Methoden der BlockHandler-Klasse aufgerufen, siehe {@link BlockHandler}
+ */
+
+
 public class Printing {
 
 	
@@ -51,8 +65,8 @@ public class Printing {
 	
 	
 	/**
-	 * Druckt Informationen über den nächsten Block
-	 * @param current: der nächste Block
+	 * Druckt Informationen &uuml;ber den n&auml;chsten Block
+	 * @param current: der n&auml;chste Block
 	 */
 	public void printSpawnNextBlock(Block current ){
 	      System.out.println("\nNeuer Block: " + current.getShape() + ", an der Position  " + current.getPoscol() + "/" + current.getPosrow());
@@ -62,7 +76,7 @@ public class Printing {
 	
 	/**
 	 * Druckt den Versuch der Bewegung
-	 * @param moveDis: Anzahl der Kästchen, die bewegt wurden
+	 * @param moveDis: Anzahl der K&auml;stchen, die bewegt wurden
 	 * @param direction: Richtung der Bewegung
 	 */
 	public void printTryMove(int moveDis, String direction){
@@ -71,10 +85,10 @@ public class Printing {
 	
 	
 	/**
-	 * Druckt ob die Bewegung möglich war
-	 * @param moveDis: Anzahl der Kästchen, die bewegt wurden
+	 * Druckt ob die Bewegung m&ouml;glich war
+	 * @param moveDis: Anzahl der K&auml;stchen, die bewegt wurden
 	 * @param direction: Richtung der Bewegung
-	 * @param possible: ob es möglich war
+	 * @param possible: ob es m&ouml;glich war
 	 * 	 */
 	public void printMovePossible(int moveDis,String direction, boolean possible){
 		
@@ -97,9 +111,9 @@ public class Printing {
 		
 		
 		/**
-		 * Druckt, ob Rotation möglich ist
+		 * Druckt, ob Rotation m&ouml;glich ist
 		 * @param direction: Richtung der Rotation
-		 * @param possible: war die Rotation möglich
+		 * @param possible: war die Rotation m&ouml;glich
 		 */
            
 		public void printRotationPossible(String direction, int possible){
@@ -113,11 +127,11 @@ public class Printing {
 		}
 		
 		/**
-		 * Druckt, wenn Reihen aufgelöst worden sind
+		 * Druckt, wenn Reihen aufgel&auml;st worden sind
 		 * @param anzahl: Anzahl der Reihen
 	 */
 	public void printDeleteFullRows(int anzahl){
-		System.out.println(anzahl+" vollständige Reihen wurden aufgelöst.");
+		System.out.println(anzahl+" vollstaendige Reihen wurden aufgeloest.");
 	}
 	
 	/**

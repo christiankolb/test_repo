@@ -6,9 +6,11 @@
  */
 
 /**
- * 
- * Die BLock-Klasse enthaelt alle Methoden zum verhalten eines Spielsteins.
- * Ausgefuehrt werden diese Methoden hauptsaechlich von der Klasse BlockHandler aus, siehe {@link BlockHandler}
+ * Die Block-Klasse enthaelt alle Variablen, die eine Spielstein beschreiben.
+ * Zu diesen Variablen sind in der Klasse auch die dazugehÃ¶rigen Getter- und Setter-Methoden enthalten.
+ * Die Konstruktoren der Kind-Klassen der Klasse Block (welche ja abstrakt ist) werden nur in der BlockFactory-Klasse aufgerufen,
+ * Die Getter & Setter werden aber nur in der BlockHandler-Klasse aufgerufen, siehe {@link BlockHandler} .
+ * Folgende Klassen erben von der Klasse Block: {@link Block_I}, {@link Block_J}, {@link Block_L}, {@link Block_O}, {@link Block_S}, {@link Block_T} und {@link Block_Z}
  */
 
 public abstract class Block {
@@ -57,7 +59,7 @@ public abstract class Block {
 	
 	
 	/** 
-	 * Setter-Methode für finished
+	 * Setter-Methode fuer finished
 	 */
 	public void setFinished(boolean f){
 		this.finished=f;
@@ -104,7 +106,7 @@ public abstract class Block {
 	}
 
 	/** 
-	 * @return Gibt Gibt die Position im Feld vom Quadrat-Block des ersten K&auml;stchens oben links zurueck (Spaltenwert)
+	 * @return  Gibt die Position im Feld vom Quadrat-Block des ersten K&auml;stchens oben links zurueck (Spaltenwert)
 	 */
 
 	public int getPoscol() {

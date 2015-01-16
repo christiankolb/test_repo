@@ -1,6 +1,10 @@
 
-public class Moves {
+/**
+ * Die Moves-Klasse enthaelt alle Methoden zum Verhalten eines Spielsteins.
+ * Aufgerufen werden diese Methoden in der Klasse BlockHandler, siehe {@link BlockHandler}
+ */
 
+public class Moves {
 	
 //////Patricks Version
 	public boolean moveDown(Field field, Block current){
