@@ -84,7 +84,7 @@ public class Field {
 		boolean skip;
 		int anzahl=0;
 		for (int i = 4; i < TOTAL_HEIGHT - 2; i++) {
-			isFull = false;
+			isFull = true;
 			skip = false;
 			for (int j = 2; j < TOTAL_WIDTH - 2; j++) {
 				if(skip){j++;}
