@@ -120,11 +120,5 @@ public class Field {
 	}
 
 
-	/*
-	 * Helperlmethode für Unit-Test
-	 */
-	public void setCellFull(int x, int y){
-		field[x][y].setFull();
-	}
 
 } // end class Field

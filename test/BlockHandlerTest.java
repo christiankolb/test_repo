@@ -32,7 +32,7 @@ private BlockHandler handler;
 
     @org.junit.Test //soll zeigen, dass neuer Stein gespawned  u nicht der alte weiterverwendet wird
     public void testSpawnNextBlock() throws Exception {
-        factory.createNewBlock(1);
+       current= factory.createNewBlock(1);
         Block last = current;
         current = factory.createNewBlock(1);
         assertEquals(false, current == last);
@@ -75,15 +75,21 @@ private BlockHandler handler;
 
     @org.junit.Test
     public void testIsGameOver() throws Exception {
-        field.setCellFull(2,3); //eine Cell erste Reihe über Spielfeld true -> Gameover
+        field.getField()[2][3].setFull(); //eine Cell erste Reihe über Spielfeld true -> Gameover
         assertEquals(true, handler.isGameOver());
     }
 
     @org.junit.Test
     public void testGetCurrentFinished() throws Exception {
-        factory.createNewBlock(1); //erzeugt neuen Stein der Höhe 3
-        current.setPosrow(19); //bewegt Stein bis 1 Reihe über Spielfeldrand
-        //handler.standardMoveDown(); //1x noch nach unten, damit currentFinished gesetzt u somit getestet werden kann
+        current=factory.createNewBlock(1); //erzeugt neuen Stein der Höhe 3
+        current.setPosrow(21); //bewegt Stein bis 1 Reihe über Spielfeldrand
+        handler.setCurrent(current);
+        handler.standardMoveDown(); //1x noch nach unten, damit currentFinished gesetzt u somit getestet werden kann
         assertEquals(true, handler.getCurrentFinished());
+    }
+    
+    @org.junit.Test
+    public void testFinalizeBlock(){
+    	
     }
 }
