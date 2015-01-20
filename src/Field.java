@@ -46,7 +46,7 @@ public class Field {
 	
 	
 	/** 
-	 * Methode die Variable TOTAL_HEIGHT zurückgibt
+	 * Methode die Variable TOTAL_HEIGHT zurï¿½ckgibt
 	 * @return TOTAL_HEIGHT
 	 */
 	public int getTotalHeight(){
@@ -55,7 +55,7 @@ public class Field {
 	
 	
 	/** 
-	 * Methode die Variable TOTAL_WIDTH zurückgibt
+	 * Methode die Variable TOTAL_WIDTH zurï¿½ckgibt
 	 * @return TOTAL_WIDTH
 	 */
 	public int getTotalWidth(){
@@ -114,10 +114,17 @@ public class Field {
 	 * Methode, welches das Cell-Array, als das Spielfeld ausgibt
 	 * @return Gibt das Spielfeld zur&uuml;ck
 	 */
-	
 
 	public Cell[][] getField() {
 		return field;
+	}
+
+
+	/*
+	 * Helperlmethode fÃ¼r Unit-Test
+	 */
+	public void setCellFull(int x, int y){
+		field[x][y].setFull();
 	}
 
 } // end class Field

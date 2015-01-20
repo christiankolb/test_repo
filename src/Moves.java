@@ -150,7 +150,7 @@ public class Moves {
 	
 	/**
 	 * ueberpruefen ob drehung moeglich
-	 * @param rotatet: Ist der Spielstein in rotierter Form, field ist das Spielfeld
+	 * @param rotated: Ist der Spielstein in rotierter Form, field ist das Spielfeld
 	 * @return Gibt einen Booleanwert zurueck, der anzeigt ob er der rotierte Stein auch "Platz" hat im Spielfeld, also ob die Rotation ueberhaupt moeglich ist
 	 */
 	
