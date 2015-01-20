@@ -221,7 +221,7 @@ public class BlockHandler {
     public boolean isGameOver(){
     	for (int i=0; i<4; i++){
     		for (int j=0; j<14; j++){
-    			if (!field.getField()[i][j].getIsEmpty()){
+    			if (!this.field.getField()[i][j].getIsEmpty()){
                     return true;
                 }
     		}
@@ -248,7 +248,7 @@ public class BlockHandler {
      * nach absetzen im field "verewigen" [cell.isEmpty false, cell.shape entsprechende shape], volle reihen l&ouml;schen
      * F&uuml;hrt am Ende zu der Methode, die &uuml;berpr&uumlft, ob Reihen im Spielfeld voll sind oder nicht, siehe {@link Field#deleteFullRows()};
     */
-    private void finalizeBlock(){
+    public void finalizeBlock(){
     	if(current.finished){
             for (int i=0;i<current.block.length;i++){
             	for (int j=0; j<current.block[0].length;j++){
