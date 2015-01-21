@@ -100,7 +100,7 @@ public class BlockHandler {
      */
     public void moveBlock(){
         int moveDir = randomNumber(2,0);
-        int moveDis = randomNumber(5,0);
+        int moveDis = randomNumber(5,1); // 0 auf 1 geändert, somit immer Bewegung
 
         switch(moveDir){
             case 0:
@@ -302,11 +302,11 @@ public class BlockHandler {
         this.current = current;
     }
 
-    /**
+  /*  /**
      * modifizierte Version der Methode moveBlock(), ohne Zufallszahlen für Unit-Test
      * @param moveDir statt Zufallszahl, Richtung in die bewegt werden soll (0 links, 1 rechts, 2 abwärts)
      * @param moveDis statt ZufallszahlAnzahl der Kästchen um die in moveDir gegebenen Kästchen bewegt werden soll
-     */
+     *
     public void moveBlock(int moveDir, int moveDis){
 
        //Parameter anstelle von Zufallszahlen
@@ -352,10 +352,10 @@ public class BlockHandler {
 
     /**
      * modifizierte Version von rotateBlock(), ohne Zufallszahlen für Unit-Test
-     * @param direction Richtung in die gedreht werden soll
-     */
-    public void rotateBlock(int direction){
-        int rotation = randomNumber(4,-4);
+     * @param rotation Richtung in die gedreht werden soll
+     *
+    public void rotateBlock(int rotation){
+        //int rotation = randomNumber(4,-4);
         boolean rotated;
 
         // drehung nach links
@@ -379,6 +379,6 @@ public class BlockHandler {
             }
         }
         finalizeBlock();
-    }
+    }*/
 
 } // end class BlockHandler

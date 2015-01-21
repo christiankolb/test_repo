@@ -28,15 +28,15 @@ private BlockHandler handler;
 
     @org.junit.Test //soll zeigen, dass neuer Stein gespawned  u nicht der alte weiterverwendet wird
     public void testSpawnNextBlock() throws Exception {
-       current= factory.createNewBlock(1);
+        current= factory.createNewBlock(1);
         Block last = current;
         current = factory.createNewBlock(1);
         assertEquals(false, current == last);
     }
 
-    @org.junit.Test
+    @org.junit.Test //zeigt, dass der aktuelle Stein bewegt wurde. Egal ob links,rechts,abwärts
     public void testMoveBlock() throws Exception {
-        current = factory.createNewBlock(5);
+       /* current = factory.createNewBlock(5);
         handler.setCurrent(current);
         handler.getCurrent().setPosrow(0); //Standardwert wie in spawnNextBlock()
         handler.getCurrent().setPoscol(4); //Standardwert wie in spawnNextBlock();
@@ -52,6 +52,18 @@ private BlockHandler handler;
         int prevPosrow = handler.getCurrent().getPosrow();
         handler.moveBlock(2,11); //2 für bewegung nach  unten; 11 bedeutungslos, da nur 1 kästchen bei abwärts vorgesehen ist
         assertEquals(prevPosrow+1, handler.getCurrent().getPosrow());
+    */
+
+        current = factory.createNewBlock(5);
+        handler.setCurrent(current);
+        current.setPoscol(4); //Standardwert wie in spawnNext()
+        current.setPosrow(0); //Standardwert wie in spawnNext()
+        int prevRow = current.getPosrow();
+        int prevCol = current.getPoscol();
+        handler.moveBlock();
+        System.out.println(prevCol);
+        System.out.println(current.getPoscol());
+        assertEquals(true, (current.getPosrow() != prevRow || current.getPoscol() != prevCol));
     }
 
     @org.junit.Test
