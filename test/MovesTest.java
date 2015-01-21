@@ -1,12 +1,7 @@
-
-
-
-
 import static org.junit.Assert.*;
-
 import java.util.Random;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.After;
 import org.junit.Test;
 
 public class MovesTest {
@@ -39,6 +34,9 @@ public class MovesTest {
 		
 		// handler = new BlockHandler(field, printing);
 	}
+
+	@After
+	public void tearDown(){}
 	
 	@org.junit.Test 
 	public void TestMoveLeft(){
@@ -53,9 +51,9 @@ public class MovesTest {
 		assertTrue(movepossible);
 		assertEquals(poscol-1,current.getPoscol());
 		
-		//testet ob eine Bewegung nach links im ungültigen Bereich abgewiesen wird
-		//An der Stelle 10/4 würde der Block dann anfangen, aber dieser ist nicht ausgefüllt,
-		//da beim Standard J die ersten zwei vertikalen Kästchen frei sind
+		//testet ob eine Bewegung nach links im ungï¿½ltigen Bereich abgewiesen wird
+		//An der Stelle 10/4 wï¿½rde der Block dann anfangen, aber dieser ist nicht ausgefï¿½llt,
+		//da beim Standard J die ersten zwei vertikalen Kï¿½stchen frei sind
 		
 		field.getField()[10][4].setFull();
 		movepossible=moves.moveLeft(field, current);
@@ -63,16 +61,16 @@ public class MovesTest {
 		assertEquals(poscol-2,current.getPoscol());
 		
 		
-		//testet ob eine Bewegung nach links im ungültigen Bereich abgewiesen wird
-		//An der Stelle 10/4 fängt der Block an und soll nicht nach links können, da sonst ein Teil
-		//des Blocks einen Teil des ausgefüllten Feldes überlappen würde
+		//testet ob eine Bewegung nach links im ungï¿½ltigen Bereich abgewiesen wird
+		//An der Stelle 10/4 fï¿½ngt der Block an und soll nicht nach links kï¿½nnen, da sonst ein Teil
+		//des Blocks einen Teil des ausgefï¿½llten Feldes ï¿½berlappen wï¿½rde
 		
 		movepossible=moves.moveLeft(field, current);
 		assertFalse(movepossible);
 		assertEquals(poscol-2,current.getPoscol());
 		
 		
-		//überprüft, ob Bewegung abgewiesen wird, wenn Stein am linken Rand ist
+		//ï¿½berprï¿½ft, ob Bewegung abgewiesen wird, wenn Stein am linken Rand ist
 		poscol=2;
 		posrow=6;
 		current.setPosrow(posrow);
@@ -100,9 +98,9 @@ public class MovesTest {
 		assertTrue(movepossible);
 		assertEquals(poscol+1,current.getPoscol());
 		
-		//testet ob eine Bewegung nach rechts im ungültigen Bereich abgewiesen wird
-		//An der Stelle 10/8 würde der Block sich ebenfalls befinden, aber dieser Teil ist nicht ausgefüllt,
-		//da beim Standard L die letzten zwei vertikalen Kästchen von oben frei sind
+		//testet ob eine Bewegung nach rechts im ungï¿½ltigen Bereich abgewiesen wird
+		//An der Stelle 10/8 wï¿½rde der Block sich ebenfalls befinden, aber dieser Teil ist nicht ausgefï¿½llt,
+		//da beim Standard L die letzten zwei vertikalen Kï¿½stchen von oben frei sind
 		
 		field.getField()[10][9].setFull();
 		movepossible=moves.moveRight(field, current);
@@ -110,9 +108,9 @@ public class MovesTest {
 		assertEquals(poscol+2,current.getPoscol());
 		
 		
-		//testet ob eine Bewegung nach rechts im ungültigen Bereich abgewiesen wird
-		//An der Stelle 10/9 befindet sich ein Teil des Blcoks und soll nicht nach rechts können, da sonst ein Teil
-		//des Blocks einen Teil des ausgefüllten Feldes überlappen würde
+		//testet ob eine Bewegung nach rechts im ungï¿½ltigen Bereich abgewiesen wird
+		//An der Stelle 10/9 befindet sich ein Teil des Blcoks und soll nicht nach rechts kï¿½nnen, da sonst ein Teil
+		//des Blocks einen Teil des ausgefï¿½llten Feldes ï¿½berlappen wï¿½rde
 		
 		movepossible=moves.moveRight(field, current);
 		assertFalse(movepossible);
@@ -136,15 +134,15 @@ public class MovesTest {
 		assertTrue(movepossible);
 		assertEquals(posrow+1,current.getPosrow());
 		
-		//testet ob eine Bewegung nach unten im ungültigen Bereich abgewiesen wird
-		//An der Stelle 10/10 befindet sich ein ausgefülltes Kästchen im Feld
+		//testet ob eine Bewegung nach unten im ungï¿½ltigen Bereich abgewiesen wird
+		//An der Stelle 10/10 befindet sich ein ausgefï¿½lltes Kï¿½stchen im Feld
 		
 		field.getField()[14][6].setFull();
 		movepossible=moves.moveDown(field, current);
 		assertFalse(movepossible);
 		assertEquals(posrow+1,current.getPosrow());
 		
-		//testet ob eine Bewegung nach unten im ungültigen Bereich (am Boden) abgewiesen wird
+		//testet ob eine Bewegung nach unten im ungï¿½ltigen Bereich (am Boden) abgewiesen wird
 		poscol=2;
 		posrow=21;
 		current.setPosrow(posrow);
@@ -161,7 +159,7 @@ public class MovesTest {
 	@Test
 	public void TestRotateRight(){
 	
-		//testet die Drehung nach rechts im gültigen Bereich
+		//testet die Drehung nach rechts im gï¿½ltigen Bereich
 		poscol=5;
 		posrow=10;
 		current.setPosrow(posrow);
@@ -192,7 +190,7 @@ public class MovesTest {
 	
 	@Test
 	public void testRotateLeft(){
-		//testet die Drehung nach links im gültigen Bereich
+		//testet die Drehung nach links im gï¿½ltigen Bereich
 		poscol=5;
 		posrow=10;
 		current.setPosrow(posrow);
@@ -218,9 +216,6 @@ public class MovesTest {
 		current.setPoscol(poscol);
 		rotate= moves.rotateRight(field, current);
 		assertEquals(0, rotate);
-			
-	
-		
 	
 	} // end testRotateLeft
 

@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
 
 import java.util.Random;
 
@@ -12,8 +15,7 @@ private Block current;
 private boolean currentFinished;
 private BlockHandler handler;
 
-
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
     	
     	moves= new Moves();
@@ -25,8 +27,11 @@ private BlockHandler handler;
     	handler = new BlockHandler(field, printing);
     }
 
+    @After
+    public void tearDown(){}
 
-    @org.junit.Test //soll zeigen, dass neuer Stein gespawned  u nicht der alte weiterverwendet wird
+
+    @Test //soll zeigen, dass neuer Stein gespawned  u nicht der alte weiterverwendet wird
     public void testSpawnNextBlock() throws Exception {
         current= factory.createNewBlock(1);
         Block last = current;
@@ -34,7 +39,7 @@ private BlockHandler handler;
         assertEquals(false, current == last);
     }
 
-    @org.junit.Test //zeigt, dass der aktuelle Stein bewegt wurde. Egal ob links,rechts,abwärts
+    @Test //zeigt, dass der aktuelle Stein bewegt wurde. Egal ob links,rechts,abwärts
     public void testMoveBlock() throws Exception {
   
 
@@ -45,12 +50,10 @@ private BlockHandler handler;
         int prevRow = current.getPosrow();
         int prevCol = current.getPoscol();
         handler.moveBlock();
-        System.out.println(prevCol);
-        System.out.println(current.getPoscol());
         assertEquals(true, (current.getPosrow() != prevRow || current.getPoscol() != prevCol));
     }
 
-    @org.junit.Test
+    @Test
     public void testStandardMoveDown() throws Exception {
         current = factory.createNewBlock(3);
         handler.setCurrent(current);
@@ -62,14 +65,14 @@ private BlockHandler handler;
 
 
 
-    @org.junit.Test
+    @Test
     public void testIsGameOver() throws Exception {
         field.getField()[2][3].setFull(); //eine Cell erste Reihe über Spielfeld true -> Gameover
         handler = new BlockHandler(field,printing);
         assertTrue(handler.isGameOver());
     }
 
-    @org.junit.Test
+    @Test
     public void testGetCurrentFinished() throws Exception {
         current=factory.createNewBlock(1); //erzeugt neuen Stein der Höhe 3
         current.setPosrow(21); //bewegt Stein bis 1 Reihe über Spielfeldrand

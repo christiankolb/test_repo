@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.After;
 
 import static org.junit.Assert.*;
 
@@ -8,11 +9,13 @@ private BlockFactory factory;
 private Block block;
 	
 	@Before
-	public void initTest(){
-	factory= new BlockFactory();	
-	block=null;
+	public void setUp(){
+		factory= new BlockFactory();
+		block=null;
 	}
-	
+
+	@After
+	public void tearDown(){}
 	
     @Test
     public void testCreateNewBlock() throws Exception {
