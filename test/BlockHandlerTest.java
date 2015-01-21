@@ -36,23 +36,7 @@ private BlockHandler handler;
 
     @org.junit.Test //zeigt, dass der aktuelle Stein bewegt wurde. Egal ob links,rechts,abwärts
     public void testMoveBlock() throws Exception {
-       /* current = factory.createNewBlock(5);
-        handler.setCurrent(current);
-        handler.getCurrent().setPosrow(0); //Standardwert wie in spawnNextBlock()
-        handler.getCurrent().setPoscol(4); //Standardwert wie in spawnNextBlock();
-
-        int prevPoscol = handler.getCurrent().getPoscol();
-        handler.moveBlock(0,3); //0 für bewegung nach links, 3 für drei kästchen
-        assertEquals(prevPoscol - 2, handler.getCurrent().getPoscol()); //prevPoscol-2, da Bewegung um 3 nicht erlaubt ist
-
-        prevPoscol = handler.getCurrent().getPoscol();
-        handler.moveBlock(1,9); //1 für bewegung nach links, 9 für neun kästchen
-        assertEquals(prevPoscol+7, handler.getCurrent().getPoscol()); //prevPoscol+7, da Bewegung um 9 nicht erlaubt ist
-
-        int prevPosrow = handler.getCurrent().getPosrow();
-        handler.moveBlock(2,11); //2 für bewegung nach  unten; 11 bedeutungslos, da nur 1 kästchen bei abwärts vorgesehen ist
-        assertEquals(prevPosrow+1, handler.getCurrent().getPosrow());
-    */
+  
 
         current = factory.createNewBlock(5);
         handler.setCurrent(current);
