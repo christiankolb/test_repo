@@ -219,6 +219,7 @@ public class MovesTest {
 		rotate= moves.rotateRight(field, current);
 		assertEquals(0, rotate);
 			
+	
 		
 	
 	} // end testRotateLeft
